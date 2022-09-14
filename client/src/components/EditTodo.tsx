@@ -15,14 +15,27 @@ import CloseIcon from "@mui/icons-material/Close";
 
 interface ToDo {
   todo: {
-    todo_id: string;
-    description: string;
+      id : string
+      model: string
+      country: string
+      device: string
+      oem : string
+      count_ebay : number
+      price_ebay : string
+      price_store: string
+      count_store: string
+      link_adr: string
+      image : string
+    // todo_id: string;
+    // description: string;
+
     // completed: boolean;
+
   };
 }
 
 const EditTodo = ({ todo }: ToDo) => {
-  const [description, setDescription] = useState(todo.description);
+  const [description, setDescription] = useState(todo);
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -40,7 +53,7 @@ const EditTodo = ({ todo }: ToDo) => {
     try {
       const body = { description };
       const response = await fetch(
-        `http://localhost7000/device/${todo.todo_id}`,
+        `http://localhost7000/device/${todo.id}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
@@ -67,7 +80,7 @@ const EditTodo = ({ todo }: ToDo) => {
       <Dialog
         open={open}
         onClose={handleClose}
-        onClick={() => setDescription(todo.description)}
+        onClick={() => setDescription(todo)}
       >
         <IconButton
           aria-label="close"

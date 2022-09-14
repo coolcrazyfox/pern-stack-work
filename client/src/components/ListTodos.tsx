@@ -51,7 +51,7 @@ const ListTodos = () => {
   const deleteTodo = async (id: string) => {
     try {
       const deleteTodo = await fetch(
-        `baseUrl${id}`,
+        `baseUrl/${id}`,
         {
           method: "DELETE",
         }
