@@ -35,7 +35,7 @@ interface ToDo {
 }
 
 const EditTodo = ({ todo }: ToDo) => {
-  const [description, setDescription] = useState(todo);
+  const [description, setDescription] = useState(todo.description);
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -80,7 +80,7 @@ const EditTodo = ({ todo }: ToDo) => {
       <Dialog
         open={open}
         onClose={handleClose}
-        onClick={() => setDescription(todo)}
+        onClick={() => setDescription(todo.description)}
       >
         <IconButton
           aria-label="close"
