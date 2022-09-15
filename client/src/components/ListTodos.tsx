@@ -36,13 +36,14 @@ export const baseUrl = "http://localhost:7000/device"
 
 const ListTodos = () => {
   const [todos, setTodos] = useState<ToDoContainer>([]);
+  const [loading, setLoading] = (false)
 
   const getTodos = async () => {
     try {
       const response = await fetch(baseUrl);
       const jsonData = await response.json();
       setTodos(jsonData);
-      // console.log('state',setTodos(jsonData))
+      console.log('state',setTodos(jsonData))
     } catch (error) {
       console.error(error.message);
     }

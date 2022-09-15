@@ -21,6 +21,9 @@ app.use(function (req, res, next) {
 
 // Routes
 // create todo_
+app.get('/', async (req, res )=>{
+    
+})
 app.post("/device", async (req, res) => {
     try {
         const {

@@ -38,9 +38,9 @@ export const baseUrl = "http://localhost:7000/device"
 
 const ListDevice = () => {
     const [todos, setTodos] = useState([]);
-    console.log('1',todos)
+    // console.log('1',todos)
     const [itemCarList, setItemCarList] = useState(todos.slice(0, 50))
-    console.log('2',todos.slice(0, 50))
+    // console.log('2',todos.slice(0, 50))
 
     const [pageNumber, setPageNumber] = useState(0)
 
@@ -49,7 +49,7 @@ const ListDevice = () => {
             const response = await fetch(baseUrl);
             const jsonData = await response.json();
             setTodos(jsonData);
-            // console.log('state',setTodos(jsonData))
+            console.log('state',setTodos(jsonData))
         } catch (error) {
             console.error(error.message);
         }
@@ -146,11 +146,11 @@ const ListDevice = () => {
             // />
         })
     const pageCountItem = Math.ceil(itemCarList.length / carsPerPage)
-    console.log('3', pageCountItem)
+    // console.log('pageCountItem', pageCountItem)
 
     const changePage = ({selected}) => {
         setPageNumber(selected)
-        console.log('4', setPageNumber(selected))
+        // console.log('setPageNumber', setPageNumber(selected))
     }
     useEffect(() => {
         getTodos();
