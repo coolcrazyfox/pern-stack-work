@@ -35,7 +35,7 @@ interface ToDo {
 }
 
 const EditTodo = ({ todo }: ToDo) => {
-  const [description, setDescription] = useState(todo.description);
+  // const [description, setDescription] = useState(todo.description);
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -51,13 +51,13 @@ const EditTodo = ({ todo }: ToDo) => {
   ) => {
     event.preventDefault();
     try {
-      const body = { description };
+      // const body = { description };
       const response = await fetch(
         `http://localhost7000/device/${todo.id}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(body),
+          // body: JSON.stringify(body),
         }
       );
       // window.location.href = "/";
@@ -80,7 +80,7 @@ const EditTodo = ({ todo }: ToDo) => {
       <Dialog
         open={open}
         onClose={handleClose}
-        onClick={() => setDescription(todo.description)}
+        // onClick={() => setDescription(todo.description)}
       >
         <IconButton
           aria-label="close"
@@ -101,10 +101,10 @@ const EditTodo = ({ todo }: ToDo) => {
             margin="normal"
             label="Todo description"
             variant="outlined"
-            value={description}
-            onChange={(event) => {
-              setDescription(event.target.value);
-            }}
+            // value={description}
+            // onChange={(event) => {
+            //   setDescription(event.target.value);
+            // }}
             fullWidth
           />
         </DialogContent>
