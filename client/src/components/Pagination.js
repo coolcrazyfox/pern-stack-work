@@ -1,4 +1,5 @@
 import React from 'react';
+import s from '../style/Pagination.module.css'
 
 const Pagination = ({devicePerPage, totalDevice, paginate}) => {
     const pageNumbers = []
@@ -7,11 +8,11 @@ const Pagination = ({devicePerPage, totalDevice, paginate}) => {
     }
 
         return (
-            <div>
-                <ul className={"pagination"}>
+            <div className={s.nav}>
+                <ul className={s.pagination}>
                     {pageNumbers.map(number =>(
-                        <li className={'page_item'} key={number}>
-                            <a href={'#'} className={'page_link'} onClick={()=>paginate(number)}>
+                        <li className={s.page_item} key={number}>
+                            <a href={'#'} className={s.page_link} onClick={()=>paginate(number)}>
                                 {number}
                             </a>
                         </li>
