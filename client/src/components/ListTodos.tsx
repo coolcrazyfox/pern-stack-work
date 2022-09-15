@@ -12,6 +12,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import DoneIcon from "@mui/icons-material/Done";
 import EditIcon from "@mui/icons-material/Edit";
 import ConnectedTvTwoToneIcon from '@mui/icons-material/ConnectedTvTwoTone';
+import Pagination from "./Pagination";
 
 export interface ToDo {
   // todo_id: string;
@@ -36,14 +37,19 @@ export const baseUrl = "http://localhost:7000/device"
 
 const ListTodos = () => {
   const [todos, setTodos] = useState<ToDoContainer>([]);
-  const [loading, setLoading] = (false)
+  const [loading, setLoading] = useState(false)
+  const [currentPage, setCurrentPage]= useState(1)
+  const [devicePerPage]= useState(25)
+
 
   const getTodos = async () => {
     try {
+      setLoading(true)
       const response = await fetch(baseUrl);
       const jsonData = await response.json();
       setTodos(jsonData);
-      console.log('state',setTodos(jsonData))
+      setLoading(false)
+      // console.log('state',setTodos(jsonData))
     } catch (error) {
       console.error(error.message);
     }
@@ -88,10 +94,21 @@ const ListTodos = () => {
 
   useEffect(() => {
     getTodos();
+    console.log('getTodos',getTodos)
+
   }, []);
+  const lastIndex = currentPage * devicePerPage
+  const firstIndex = lastIndex - devicePerPage
+  const currentDevice = todos.slice(firstIndex, lastIndex)
+  const paginate = (pageNum:number) => setCurrentPage(pageNum)
 
   return (
     <Fragment>
+      <Pagination
+          devicePerPage={devicePerPage}
+          totalDevice={todos.length}
+          paginate={paginate}
+      />
       <Table sx={{ mt: 4 }}>
         <TableHead>
           <TableRow>
@@ -111,7 +128,8 @@ const ListTodos = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {todos
+          {currentDevice
+            // todos
             // .sort((a, b) => +a.completed - +b.completed)
             .map((todo) => {
               return (
@@ -187,6 +205,7 @@ const ListTodos = () => {
             })}
         </TableBody>
       </Table>
+
     </Fragment>
   );
 };

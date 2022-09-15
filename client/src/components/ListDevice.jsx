@@ -100,7 +100,7 @@ const ListDevice = () => {
         .map(t => {
             return (
                 <Table
-                    key={t.index}
+                    key={t.id}
                     model={t.model}
                     country={t.country}
                     device={t.device}
