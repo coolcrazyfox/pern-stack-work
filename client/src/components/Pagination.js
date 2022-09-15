@@ -9,10 +9,10 @@ const Pagination = ({devicePerPage, totalDevice, paginate}) => {
 
         return (
             <div className={s.nav}>
-                <ul className={s.pagination}>
+                <ul className={s.paginationBttns}>
                     {pageNumbers.map(number =>(
-                        <li className={s.page_item} key={number}>
-                            <a href={'#'} className={s.page_link} onClick={()=>paginate(number)}>
+                        <li className={s.paginationBttns} key={number}>
+                            <a href={'#'}  onClick={()=>paginate(number)}>
                                 {number}
                             </a>
                         </li>
