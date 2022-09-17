@@ -17,24 +17,32 @@ interface ToDo {
   todo: {
       id : string
       model: string
-      country: string
-      device: string
-      oem : string
-      count_ebay : number
-      price_ebay : string
-      price_store: string
-      count_store: string
-      link_adr: string
-      image : string
-    // todo_id: string;
-    // description: string;
-
-    // completed: boolean;
+      country?: string
+      device?: string
+      oem?: string
+      count_ebay ?: string
+      price_ebay ?: string
+      price_store?: string
+      count_store?: string
+      link_adr?: string
+      image ?: string
+      datetime ?: string   
 
   };
 }
 
 const EditTodo = ({ todo }: ToDo) => {
+  const [model, setModel] = useState("");
+  const [country, setCountry] = useState("");
+  const [device, setDevice] = useState("");
+  const [oem, setOem] = useState("");
+  const [count_ebay, setCountEbay] = useState("");
+  const [price_ebay, setPriceEbay] = useState("");
+  const [price_store, setPriceStore] = useState("");
+  const [count_store, setCountStore] = useState("");
+  const [link_adr, setLinkAdr] = useState("");
+  const [image, setImage] = useState("");
+  const [datetime, setDateTime] = useState("");  
   // const [description, setDescription] = useState(todo.description);
   const [open, setOpen] = React.useState(false);
 
@@ -51,13 +59,16 @@ const EditTodo = ({ todo }: ToDo) => {
   ) => {
     event.preventDefault();
     try {
-      // const body = { description };
+      const body = { model
+        // ,
+        //  country, device, oem, count_ebay, price_ebay, price_store, count_store, link_adr, image, datetime 
+        };
       const response = await fetch(
         `http://localhost7000/device/${todo.id}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
-          // body: JSON.stringify(body),
+          body: JSON.stringify(body),
         }
       );
       // window.location.href = "/";
@@ -80,7 +91,7 @@ const EditTodo = ({ todo }: ToDo) => {
       <Dialog
         open={open}
         onClose={handleClose}
-        // onClick={() => setDescription(todo.description)}
+        onClick={() => setModel(todo.model)}
       >
         <IconButton
           aria-label="close"
@@ -94,19 +105,129 @@ const EditTodo = ({ todo }: ToDo) => {
         >
           <CloseIcon />
         </IconButton>
-        <DialogTitle>Edit Todo</DialogTitle>
+        <DialogTitle>Edit Device</DialogTitle>
         <DialogContent sx={{ width: 500, maxWidth: "100%" }}>
           <TextField
             autoFocus
             margin="normal"
-            label="Todo description"
+            label="Edit model"
             variant="outlined"
-            // value={description}
-            // onChange={(event) => {
-            //   setDescription(event.target.value);
-            // }}
+            value={model}
+            onChange={(event) => {
+              setModel(event.target.value);
+            }}
             fullWidth
           />
+          {/* <TextField
+            autoFocus
+            margin="normal"
+            label="Edit country"
+            variant="outlined"
+            value={country}
+            onChange={(event) => {
+              setCountry(event.target.value);
+            }}
+            fullWidth
+          />
+          <TextField
+            autoFocus
+            margin="normal"
+            label="Edit device"
+            variant="outlined"
+            value={device}
+            onChange={(event) => {
+              setDevice(event.target.value);
+            }}
+            fullWidth
+          />
+          <TextField
+            autoFocus
+            margin="normal"
+            label="Edit OEM"
+            variant="outlined"
+            value={oem}
+            onChange={(event) => {
+              setOem(event.target.value);
+            }}
+            fullWidth
+          />
+          <TextField
+            autoFocus
+            margin="normal"
+            label="Edit count_ebay"
+            variant="outlined"
+            value={count_ebay}
+            onChange={(event) => {
+              setCountEbay(event.target.value);
+            }}
+            fullWidth
+          />
+          <TextField
+            autoFocus
+            margin="normal"
+            label="Edit price_ebay"
+            variant="outlined"
+            value={price_ebay}
+            onChange={(event) => {
+              setPriceEbay(event.target.value);
+            }}
+            fullWidth
+          />
+          <TextField
+            autoFocus
+            margin="normal"
+            label="Edit price_store"
+            variant="outlined"
+            value={price_store}
+            onChange={(event) => {
+              setPriceStore(event.target.value);
+            }}
+            fullWidth
+          />
+          <TextField
+            autoFocus
+            margin="normal"
+            label="Edit count_store"
+            variant="outlined"
+            value={count_store}
+            onChange={(event) => {
+              setCountStore(event.target.value);
+            }}
+            fullWidth
+          />
+          <TextField
+            autoFocus
+            margin="normal"
+            label="Edit Link"
+            variant="outlined"
+            value={link_adr}
+            onChange={(event) => {
+              setLinkAdr(event.target.value);
+            }}
+            fullWidth
+          />
+          <TextField
+            autoFocus
+            margin="normal"
+            label="Edit Image"
+            variant="outlined"
+            value={image}
+            onChange={(event) => {
+              setImage(event.target.value);
+            }}
+            fullWidth
+          />
+          <TextField
+            autoFocus
+            margin="normal"
+            label="Edit date"
+            variant="outlined"
+            value={datetime}
+            onChange={(event) => {
+              setDateTime(event.target.value);
+            }}
+            fullWidth
+          /> */}
         </DialogContent>
         <DialogActions>
           <Button onClick={(event) => updateDescription(event)}>Save</Button>

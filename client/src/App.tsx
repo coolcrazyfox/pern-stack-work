@@ -4,8 +4,9 @@ import "./App.css";
 // import InputTodo from "./components/InputTodo";
 import ListTodos from "./components/ListTodos";
 import Container from "@mui/material/Container";
-// import TabPage from "./pages/TabPage";
+import TabPage from "./pages/TabPage";
 import ListDevice from "./components/ListDevice";
+import InputDevice from "./components/InputDevice";
 
 
 // https://webtricks-master.ru/react-hooks/uchim-usecontext-na-primerah/
@@ -13,21 +14,20 @@ import ListDevice from "./components/ListDevice";
 // https://youtu.be/s59kRbD4Sw8
 
 function App() {
-  const [itemCarList, setItemCarList]=useState([])
   return (
     <Fragment>
-      {/*<div className="main_container">*/}
-             {/*<TabPage*/}
-             {/*    oemList={itemCarList}*/}
-             {/*/>*/}
+      <div className="main_container">
+             <InputDevice/>
+             <TabPage/>
           {/*<ListDevice />*/}
 
-      {/*</div>*/}
+      </div>
       {/*<CssBaseline />*/}
-      <Container maxWidth="md">
-      {/*  /!*<InputTodo />*!/*/}
-        <ListTodos />
-      </Container>
+      {/*<Container maxWidth="md">*/}
+      {/*    <InputDevice/>*/}
+      {/*/!*  /!*<InputTodo />*!/*!/*/}
+      {/*  <ListTodos />*/}
+      {/*</Container>*/}
     </Fragment>
   );
 }

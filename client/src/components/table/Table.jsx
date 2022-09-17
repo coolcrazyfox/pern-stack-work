@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
+import {ToDo} from "../../pages/TabPage";
 // import s from '../../style/Table.module.css';
-// import {IProduct} from "../../models";
-// import OEM_DATA from './../../OEM_DATA.json';
+
 
 
 // export type InitCarTypeProps ={
@@ -20,8 +20,8 @@ import React, {useState} from 'react';
 // }
 
 
-const Table = ({model, country, device, oem, count_ebay, price_ebay, price_store, count_store, link_adr, image,
-                   car_model, car_model_title, car_OEM, date, shop_price, warehouse, link }) => {
+const Table = ({model, country, device, oem, count_ebay, price_ebay, price_store, count_store, link_adr, image, datetime
+                    }) => {
     // const [carModel, setCarModel]=useState(defaultCarItems)
 
     return (
@@ -45,6 +45,7 @@ const Table = ({model, country, device, oem, count_ebay, price_ebay, price_store
                 <td >{price_ebay}</td>
                 <td >{price_store}</td>
                 <td >{count_store}</td>
+                <td >{datetime}</td>
                 <td >
                     <a href={link_adr}>link</a>
                 </td>

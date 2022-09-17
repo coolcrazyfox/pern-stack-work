@@ -14,21 +14,19 @@ import EditIcon from "@mui/icons-material/Edit";
 import ConnectedTvTwoToneIcon from '@mui/icons-material/ConnectedTvTwoTone';
 import Pagination from "./Pagination";
 
-export interface ToDo {
-  // todo_id: string;
-  // description: string;
-  // completed?: boolean;
+export interface ToDo {  
   id : string
   model: string
   country: string
   device: string
   oem : string
-  count_ebay : number
+  count_ebay : string
   price_ebay : string
   price_store: string
   count_store: string
   link_adr: string
   image : string
+  datetime : string
 }
 
 interface ToDoContainer extends Array<ToDo> {}
@@ -58,7 +56,7 @@ const ListTodos = () => {
   const deleteTodo = async (id: string) => {
     try {
       const deleteTodo = await fetch(
-        `baseUrl/${id}`,
+        `http://localhost:7000/device/${id}`,
         {
           method: "DELETE",
         }
@@ -67,33 +65,10 @@ const ListTodos = () => {
     } catch (error) {
       console.error(error.message);
     }
-  };
-
-  const completeTodo = async (id: string) => {
-    try {
-      const body = { completed: true };
-      const completeTodo = await fetch(
-        `baseUrl${id}`,
-        {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(body),
-        }
-      );
-      setTodos(
-        todos.map((todo) => {
-          return todo.id === id ? { ...todo, completed: true } : todo;
-        })
-      );
-      // window.location.href = "/";
-      window.location.reload();
-    } catch (error) {
-      console.error(error.message);
-    }
-  };
+  };  
 
   useEffect(() => {
-    getTodos();
+    getTodos();    
     console.log('getTodos',getTodos)
 
   }, []);
@@ -122,9 +97,10 @@ const ListTodos = () => {
             <TableCell>count_store</TableCell>
             <TableCell>link_adr</TableCell>
             <TableCell>image</TableCell>
+            <TableCell >___Date___</TableCell>
             <TableCell>Edit</TableCell>
             <TableCell>Delete</TableCell>
-            <TableCell>Complete</TableCell>
+            
           </TableRow>
         </TableHead>
         <TableBody>
@@ -134,16 +110,12 @@ const ListTodos = () => {
             .map((todo) => {
               return (
                 <TableRow key={todo.id}>
-                  <TableCell
-                    // style={
-                    //   todo.completed ? { textDecoration: "line-through" } : {}
-                    // }
-                  >
+                  <TableCell>
                     {todo.model}
                   </TableCell>
                   <TableCell>
                     {todo.country}
-                    {/*<EditTodo todo={todo} />*/}
+                    
                   </TableCell>
                   <TableCell>
                     {todo.device}
@@ -166,18 +138,31 @@ const ListTodos = () => {
                   </TableCell>
                   <TableCell>
                     <ConnectedTvTwoToneIcon/>
-                    {/*{todo.link_adr}*/}
+                    {todo.link_adr}
                   </TableCell>
                   <TableCell>
                     {todo.image}
                   </TableCell>
+                  <TableCell>                    
+                    {todo.datetime}
+                    {/* <IconButton
+                      component="button"
+                      // onClick={() => completeTodo(todo.id)}
+                      // disabled={todo.completed}
+                      color="success"
+                    >
+                      <DoneIcon /> */}
+                    {/* </IconButton> */}
+                  </TableCell>
                   <TableCell>
+                    
                     <IconButton
                         component="button"
-                        // onClick={() => deleteTodo(todo.id)}
+                        onClick={() => <EditTodo todo={todo}/> }
                         color="warning"
-                    >
-                      <EditIcon />
+                    > 
+                    <EditTodo todo={todo} />                                     
+                      
                     </IconButton>
                   </TableCell>
 
@@ -189,17 +174,7 @@ const ListTodos = () => {
                     >
                       <DeleteIcon />
                     </IconButton>
-                  </TableCell>
-                  <TableCell>
-                    <IconButton
-                      component="button"
-                      onClick={() => completeTodo(todo.id)}
-                      // disabled={todo.completed}
-                      color="success"
-                    >
-                      <DoneIcon />
-                    </IconButton>
-                  </TableCell>
+                  </TableCell>                  
                 </TableRow>
               );
             })}
