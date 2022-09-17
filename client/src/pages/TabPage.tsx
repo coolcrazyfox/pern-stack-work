@@ -1,15 +1,15 @@
 import React, {Fragment, useEffect, useState} from 'react';
-// import {useProducts} from '../hook/products';
+
 // import ErrorMessage from '../ui/components/ErrorMessage';
 // import Loader from '../ui/components/Loader';
 
 // @ts-ignore
 import s from "../style/Table.module.css";
 // import Search from "../ui/search/Search";
-// import OEM_DATA from "../OEM_DATA.json";
+
 import ReactPaginate from "react-paginate";
 import Table from "../components/table/Table";
-import TableCell from "@mui/material/TableCell";
+
 import Pagination from "../components/Pagination";
 
 // const data = OEM_DATA;
