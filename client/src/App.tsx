@@ -7,6 +7,7 @@ import Container from "@mui/material/Container";
 import TabPage from "./pages/TabPage";
 import ListDevice from "./components/ListDevice";
 import InputDevice from "./components/InputDevice";
+import EditDevice from "./components/EditDevice";
 
 
 // https://webtricks-master.ru/react-hooks/uchim-usecontext-na-primerah/
@@ -18,7 +19,10 @@ function App() {
     <Fragment>
       <div className="main_container">
              <InputDevice/>
+
              <TabPage/>
+
+
           {/*<ListDevice />*/}
 
       </div>

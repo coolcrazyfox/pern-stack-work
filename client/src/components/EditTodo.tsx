@@ -17,32 +17,32 @@ interface ToDo {
   todo: {
       id : string
       model: string
-      country?: string
-      device?: string
+      country: string
+      device: string
       oem: string
-      count_ebay ?: string
-      price_ebay ?: string
-      price_store?: string
-      count_store?: string
-      link_adr?: string
-      image ?: string
-      datetime ?: string
+      count_ebay : string
+      price_ebay : string
+      price_store: string
+      count_store: string
+      link_adr: string
+      image : string
+      datetime : string
 
   };
 }
 
 const EditTodo = ({ todo }: ToDo) => {
-  const [model, setModel] = useState("");
-  const [country, setCountry] = useState("");
-  const [device, setDevice] = useState("");
-  const [oem, setOem] = useState("");
-  const [count_ebay, setCountEbay] = useState("");
-  const [price_ebay, setPriceEbay] = useState("");
-  const [price_store, setPriceStore] = useState("");
-  const [count_store, setCountStore] = useState("");
-  const [link_adr, setLinkAdr] = useState("");
-  const [image, setImage] = useState("");
-  const [datetime, setDateTime] = useState("");
+  const [model, setModel] = useState(todo.model);
+  const [country, setCountry] = useState(todo.country);
+  const [device, setDevice] = useState(todo.device);
+  const [oem, setOem] = useState(todo.oem);
+  const [count_ebay, setCountEbay] = useState(todo.count_ebay);
+  const [price_ebay, setPriceEbay] = useState(todo.price_ebay);
+  const [price_store, setPriceStore] = useState(todo.price_store);
+  const [count_store, setCountStore] = useState(todo.count_store);
+  const [link_adr, setLinkAdr] = useState(todo.link_adr);
+  const [image, setImage] = useState(todo.image);
+  const [datetime, setDateTime] = useState(todo.datetime);
   const [open, setOpen] = React.useState(false);
 
 
@@ -59,12 +59,7 @@ const EditTodo = ({ todo }: ToDo) => {
   ) => {
     event.preventDefault();
     try {
-      const body = { model
-        ,
-        //  country, device,
-           oem
-          //  , count_ebay, price_ebay, price_store, count_store, link_adr, image, datetime
-        };
+      const body = { model , country, device, oem, count_ebay, price_ebay, price_store, count_store, link_adr, image, datetime };
       const response = await fetch(
         `http://localhost7000/device/${todo.id}`,
         {
@@ -73,8 +68,8 @@ const EditTodo = ({ todo }: ToDo) => {
           body: JSON.stringify(body),
         }
       );
-      // window.location.href = "/";
-      window.location.reload();
+      window.location.href = "/";
+      // window.location.reload();
         console.log("response",response)
     } catch (error) {
       console.error(error.message);
@@ -121,7 +116,7 @@ const EditTodo = ({ todo }: ToDo) => {
             }}
             fullWidth
           />
-          {/* <TextField
+           <TextField
             autoFocus
             margin="normal"
             label="Edit country"
@@ -142,7 +137,7 @@ const EditTodo = ({ todo }: ToDo) => {
               setDevice(event.target.value);
             }}
             fullWidth
-          />*/}
+          />
           <TextField
             autoFocus
             margin="normal"
@@ -154,7 +149,7 @@ const EditTodo = ({ todo }: ToDo) => {
             }}
             fullWidth
           />
-            {/*<TextField
+            <TextField
             autoFocus
             margin="normal"
             label="Edit count_ebay"
@@ -230,7 +225,7 @@ const EditTodo = ({ todo }: ToDo) => {
               setDateTime(event.target.value);
             }}
             fullWidth
-          /> */}
+          />
         </DialogContent>
         <DialogActions>
           <Button onClick={(event) => updateDescription(event)}>Save</Button>

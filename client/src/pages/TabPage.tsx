@@ -11,6 +11,7 @@ import s from "../style/Table.module.css";
 // import Table from "../components/table/Table";
 import {Pagination} from "../common/c12-Pagination/Pagination";
 import EditTodo from "../components/EditTodo";
+import EditDevice from "../components/EditDevice";
 
 
 // const data = OEM_DATA;
@@ -140,7 +141,8 @@ const TabPage = () => {
                                             <a href={todo.image}>image</a>
                                         </td>
                                         <td>
-                                            <EditTodo todo={todo}/>
+                                            {/*<button onClick={()=><EditDevice todo={todo}/>}>Edit</button>*/}
+                                            <EditDevice todo={todo}/>
                                         </td>
                                         <td>
                                             <button
@@ -174,6 +176,7 @@ const TabPage = () => {
 
                     </tbody>
                 </table>
+
             </div>
         </Fragment>
     );
