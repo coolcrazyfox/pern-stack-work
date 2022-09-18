@@ -22,7 +22,7 @@ app.use(function (req, res, next) {
 // Routes
 // create todo_
 app.get('/', async (req, res )=>{
-    
+
 })
 app.post("/device", async (req, res) => {
     try {
@@ -36,7 +36,7 @@ app.post("/device", async (req, res) => {
             price_store,
             count_store,
             link,
-            image
+            image,
         } = req.body
         const newTodo = await pool.query("INSERT INTO ebaytab (model, country, device, oem, count_ebay, price_ebay, price_store, count_store, link, image) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10 ) RETURNING *",
             [
