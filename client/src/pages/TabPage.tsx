@@ -5,18 +5,13 @@ import React, {Fragment, useEffect, useState} from 'react';
 
 // @ts-ignore
 import s from "../style/Table.module.css";
-// import Search from "../ui/search/Search";
 
-// import ReactPaginate from "react-paginate";
-// import Table from "../components/table/Table";
 import {Pagination} from "../common/c12-Pagination/Pagination";
-import EditTodo from "../components/EditTodo";
 import EditDevice from "../components/EditDevice";
 import {BsFillFolderSymlinkFill, BsImage} from "react-icons/bs";
+import {FcSearch} from "react-icons/fc"
 import InputDevice from "../components/InputDevice";
 
-
-// const data = OEM_DATA;
 export interface ToDo {
     id: string
     model: string
@@ -96,11 +91,13 @@ const TabPage = () => {
                                 pageSize={devicePerPage}
                                 currentPage={currentPage}
                                 onChangedPage={paginate}/>
+                    {/*<Search/>*/}
+                    <FcSearch/>
                 </div>
 
                 <table className={s.table}>
                     <thead>
-                    {/*<Search/>*/}
+
                     <tr>
                         <th>Model</th>
                         <th>Country</th>
