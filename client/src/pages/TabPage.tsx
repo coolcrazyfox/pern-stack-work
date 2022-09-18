@@ -9,8 +9,9 @@ import s from "../style/Table.module.css";
 
 import ReactPaginate from "react-paginate";
 import Table from "../components/table/Table";
+import {Pagination} from "../common/c12-Pagination/Pagination";
 
-import Pagination from "../components/Pagination";
+
 
 // const data = OEM_DATA;
 export interface ToDo {
@@ -35,7 +36,7 @@ const TabPage = () => {
     const [todos, setTodos] = useState<ToDoContainer>([]);
     const [loading, setLoading] = useState(false)
     const [currentPage, setCurrentPage]= useState(1)
-    const [devicePerPage]= useState(14)
+    const [devicePerPage]= useState(10)
 
     const getTodos = async () => {
         try {
@@ -74,6 +75,7 @@ const TabPage = () => {
     const firstIndex = lastIndex - devicePerPage
     const currentDevice = todos.slice(firstIndex, lastIndex)
     const paginate = (pageNum:number) => setCurrentPage(pageNum)
+    console.log('totalCount',todos.length)
 
     return (
         <Fragment>
@@ -81,6 +83,11 @@ const TabPage = () => {
             {/*{error && <ErrorMessage error={error}/>}*/}
 
             <div className={s.tab_container}>
+                <Pagination totalCount={todos.length}
+
+                            pageSize={devicePerPage}
+                            currentPage={currentPage}
+                            onChangedPage={paginate}/>
                 <table className={s.table}>
                     <thead>
                     {/*<Search/>*/}
@@ -102,6 +109,7 @@ const TabPage = () => {
                     </tr>
                     </thead>
                     <tbody>
+
                     {/*<Pagination*/}
                     {/*    devicePerPage={devicePerPage}*/}
                     {/*    totalDevice={todos.length}*/}
