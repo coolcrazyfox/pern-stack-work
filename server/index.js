@@ -37,8 +37,9 @@ app.post("/device", async (req, res) => {
             count_store,
             link,
             image,
+            datetime
         } = req.body
-        const newTodo = await pool.query("INSERT INTO ebaytab (model, country, device, oem, count_ebay, price_ebay, price_store, count_store, link, image) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10 ) RETURNING *",
+        const newTodo = await pool.query("INSERT INTO ebaytab (model, country, device, oem, count_ebay, price_ebay, price_store, count_store, link, image, datetime) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11 ) RETURNING *",
             [
                 model,
                 country,
@@ -49,7 +50,8 @@ app.post("/device", async (req, res) => {
                 price_store,
                 count_store,
                 link,
-                image
+                image,
+                datetime
             ])
         res.json(newTodo.rows[0])
     } catch (error) {
@@ -96,9 +98,10 @@ app.put("/device/:id", async (req, res) => {
             price_store,
             count_store,
             link,
-            image
+            image,
+            datetime
         } = req.body;
-        const updateDevice = await pool.query("UPDATE  ebaytab SET model = $1 , country = $2, device = $3, oem = $4, count_ebay = $5, price_ebay = $6, price_store = $7, count_store = $8, link = $9, image = $10 WHERE id = $11",
+        const updateDevice = await pool.query("UPDATE  ebaytab SET model = $1 , country = $2, device = $3, oem = $4, count_ebay = $5, price_ebay = $6, price_store = $7, count_store = $8, link = $9, image = $10, datetime = $11 WHERE id = $12",
             [
                 model,
                 country,
@@ -110,6 +113,7 @@ app.put("/device/:id", async (req, res) => {
                 count_store,
                 link,
                 image,
+                datetime,
                 id
             ])
         // if (description) {

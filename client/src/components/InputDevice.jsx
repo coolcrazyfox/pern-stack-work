@@ -1,7 +1,6 @@
 import React, { Fragment, useState } from "react";
 
 const InputDevice = () => {
-  const [description, setDescription] = useState("");
   const [model, setModel] = useState("");
   const [country, setCountry] = useState("");
   const [device, setDevice] = useState("");

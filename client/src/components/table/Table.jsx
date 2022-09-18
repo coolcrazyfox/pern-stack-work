@@ -52,8 +52,18 @@ const Table = ({deleteDevice,model, country, device, oem, count_ebay, price_ebay
                 <td >
                     <a href={image}>image</a>
                 </td>
-                <td ><button>Edit</button></td>
-                <td ><button onClick={deleteDevice}>Delete</button></td>
+                <td >
+                    <button>
+                        Edit
+                    </button>
+                </td>
+                <td >
+                    <button
+                        onClick={deleteDevice}
+                    >
+                        Delete
+                    </button>
+                </td>
 
 
         </tr>
