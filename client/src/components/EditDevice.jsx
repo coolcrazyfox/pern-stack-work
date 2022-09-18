@@ -141,10 +141,13 @@ const EditDevice = ({todo}) => {
                     {/*<Button variant="warning" onClick={() => setModel(todo.model)}>*/}
                     {/*    Close*/}
                     {/*</Button>*/}
+                    <div size="sm">
+                        <Button variant="primary" onClick={e => updateDevice(e)} size="sm">
+                            Save Changes
+                        </Button>
+                    </div>
 
-                    <Button variant="primary" onClick={e => updateDevice(e)}>
-                        Save Changes
-                    </Button>
+
                 </Modal.Footer>
             </Modal>
         </Fragment>

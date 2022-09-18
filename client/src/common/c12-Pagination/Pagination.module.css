@@ -5,7 +5,7 @@
     border:1px solid #403f50;
     background: rgba(64, 63, 80, 0.38);
     border-radius: 5px;
-
+    margin-left: 30px;
     position: relative;
 }
 
@@ -14,6 +14,7 @@
     pointer-events: all;
     color: rgba(66, 168, 132, 0.74);
     background: rgb(205, 205, 217);
+
 }
 
 .page{

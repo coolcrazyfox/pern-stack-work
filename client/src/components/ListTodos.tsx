@@ -14,7 +14,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import ConnectedTvTwoToneIcon from '@mui/icons-material/ConnectedTvTwoTone';
 import Pagination from "./Pagination";
 
-export interface ToDo {  
+export interface ToDo {
   id : string
   model: string
   country: string
@@ -65,10 +65,10 @@ const ListTodos = () => {
     } catch (error) {
       console.error(error.message);
     }
-  };  
+  };
 
   useEffect(() => {
-    getTodos();    
+    getTodos();
     console.log('getTodos',getTodos)
 
   }, []);
@@ -100,7 +100,7 @@ const ListTodos = () => {
             <TableCell >___Date___</TableCell>
             <TableCell>Edit</TableCell>
             <TableCell>Delete</TableCell>
-            
+
           </TableRow>
         </TableHead>
         <TableBody>
@@ -115,7 +115,7 @@ const ListTodos = () => {
                   </TableCell>
                   <TableCell>
                     {todo.country}
-                    
+
                   </TableCell>
                   <TableCell>
                     {todo.device}
@@ -143,7 +143,7 @@ const ListTodos = () => {
                   <TableCell>
                     {todo.image}
                   </TableCell>
-                  <TableCell>                    
+                  <TableCell>
                     {todo.datetime}
                     {/* <IconButton
                       component="button"
@@ -155,14 +155,14 @@ const ListTodos = () => {
                     {/* </IconButton> */}
                   </TableCell>
                   <TableCell>
-                    
+
                     <IconButton
                         component="button"
-                        onClick={() => <EditTodo todo={todo}/> }
+                        // onClick={() => <EditTodo todo={todo}/> }
                         color="warning"
-                    > 
-                    <EditTodo todo={todo} />                                     
-                      
+                    >
+                    {/*<EditTodo todo={todo} />*/}
+
                     </IconButton>
                   </TableCell>
 
@@ -174,7 +174,7 @@ const ListTodos = () => {
                     >
                       <DeleteIcon />
                     </IconButton>
-                  </TableCell>                  
+                  </TableCell>
                 </TableRow>
               );
             })}

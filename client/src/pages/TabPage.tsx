@@ -13,6 +13,7 @@ import {Pagination} from "../common/c12-Pagination/Pagination";
 import EditTodo from "../components/EditTodo";
 import EditDevice from "../components/EditDevice";
 import {BsFillFolderSymlinkFill, BsImage} from "react-icons/bs";
+import InputDevice from "../components/InputDevice";
 
 
 // const data = OEM_DATA;
@@ -88,11 +89,15 @@ const TabPage = () => {
             {/*{error && <ErrorMessage error={error}/>}*/}
 
             <div className={s.tab_container}>
-                <Pagination totalCount={todos.length}
+                <div className={s.header_title_tab}>
+                    <InputDevice/>
+                    <Pagination totalCount={todos.length}
 
-                            pageSize={devicePerPage}
-                            currentPage={currentPage}
-                            onChangedPage={paginate}/>
+                                pageSize={devicePerPage}
+                                currentPage={currentPage}
+                                onChangedPage={paginate}/>
+                </div>
+
                 <table className={s.table}>
                     <thead>
                     {/*<Search/>*/}
@@ -136,7 +141,7 @@ const TabPage = () => {
                                         <td>{todo.count_store}</td>
                                         <td>{todo.datetime}</td>
                                         <td>
-                                            <a href={todo.link}>
+                                            <a  href={todo.link}>
                                                 <BsFillFolderSymlinkFill/>
                                             </a>
                                         </td>

@@ -40,7 +40,7 @@ const EditTodo = ({ todo }: ToDo) => {
   const [price_ebay, setPriceEbay] = useState(todo.price_ebay);
   const [price_store, setPriceStore] = useState(todo.price_store);
   const [count_store, setCountStore] = useState(todo.count_store);
-  const [link, setLinkAdr] = useState(todo.link);
+  const [link, setLink] = useState(todo.link);
   const [image, setImage] = useState(todo.image);
   const [datetime, setDateTime] = useState(todo.datetime);
   const [open, setOpen] = React.useState(false);
@@ -200,7 +200,7 @@ const EditTodo = ({ todo }: ToDo) => {
             variant="outlined"
             value={link}
             onChange={(event) => {
-              setLinkAdr(event.target.value);
+              setLink(event.target.value);
             }}
             fullWidth
           />
