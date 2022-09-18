@@ -1,4 +1,6 @@
 import React, {Fragment, useState} from "react";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 const EditDevice = ({todo}) => {
     const [model, setModel] = useState(todo.model);
@@ -40,159 +42,111 @@ const EditDevice = ({todo}) => {
             console.error(err.message);
         }
     };
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     return (
         <Fragment>
-            <button
-                type="button"
-                class="btn btn-warning"
-                data-toggle="modal"
-                data-target={`#id${todo.id}`}
-            >
+            <Button variant="primary" onClick={handleShow}>
                 Edit
-            </button>
+            </Button>
 
-            {/*
-        id = id10
-      */}
-            <div
-                class="modal"
-                id={`id${todo.id}`}
-                onClick={() => setModel(todo.model)}
-            >
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">Edit Device</h4>
-                            <button
-                                type="button"
-                                class="close"
-                                data-dismiss="modal"
-                                onClick={() => setModel(todo.model)}
-                            >
-                                &times;
-                            </button>
-                        </div>
+            <Modal show={show} onHide={handleClose} onClick={() => setModel(todo.model)}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Modal heading</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <input
+                        placeholder="Edit model"
+                        type="text"
+                        className="form-control"
+                        value={model}
+                        onChange={e => setModel(e.target.value)}
+                    />
+                    <input
+                        placeholder="Edit country"
+                        type="text"
+                        className="form-control"
+                        value={country}
+                        onChange={e => setCountry(e.target.value)}
+                    />
+                    <input
+                        placeholder="Edit device"
+                        type="text"
+                        className="form-control"
+                        value={device}
+                        onChange={e => setDevice(e.target.value)}
+                    />
+                    <input
+                        placeholder="Edit OEM"
+                        type="text"
+                        className="form-control"
+                        value={oem}
+                        onChange={e => setOem(e.target.value)}
+                    />
+                    <input
+                        placeholder="Edit count_ebay"
+                        type="text"
+                        className="form-control"
+                        value={count_ebay}
+                        onChange={e => setCountEbay(e.target.value)}
+                    />
+                    <input
+                        placeholder="Edit price_ebay"
+                        type="text"
+                        className="form-control"
+                        value={price_ebay}
+                        onChange={e => setPriceEbay(e.target.value)}
+                    />
+                    <input
+                        placeholder="Edit price_store"
+                        type="text"
+                        className="form-control"
+                        value={price_store}
+                        onChange={e => setPriceStore(e.target.value)}
+                    />
+                    <input
+                        placeholder="Edit count_store"
+                        type="text"
+                        className="form-control"
+                        value={count_store}
+                        onChange={e => setCountStore(e.target.value)}
+                    />
+                    <input
+                        placeholder="Edit date"
+                        type="text"
+                        className="form-control"
+                        value={datetime}
+                        onChange={e => setDateTime(e.target.value)}
+                    />
+                    <input
+                        placeholder="Edit link"
+                        type="text"
+                        className="form-control"
+                        value={link_adr}
+                        onChange={e => setLinkAdr(e.target.value)}
+                    />
+                    <input
+                        placeholder="Edit image"
+                        type="text"
+                        className="form-control"
+                        value={image}
+                        onChange={e => setImage(e.target.value)}
+                    />
 
-                        <div class="modal-body">
-                            <input
-                                type="text"
-                                className="form-control"
-                                value={model}
-                                onChange={e => setModel(e.target.value)}
-                            />
-                        </div>
+                </Modal.Body>
+                <Modal.Footer>
+                    {/*<Button variant="warning" onClick={() => setModel(todo.model)}>*/}
+                    {/*    Close*/}
+                    {/*</Button>*/}
 
-                        <div class="modal-footer">
-                            <button
-                                type="button"
-                                class="btn btn-warning"
-                                data-dismiss="modal"
-                                onClick={e => updateDevice(e)}
-                            >
-                                Edit
-                            </button>
-                            <button
-                                type="button"
-                                class="btn btn-danger"
-                                data-dismiss="modal"
-                                onClick={() => setModel(todo.model)}
-                            >
-                                Close
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        {/*</Fragment>*/}
-        {/*// <Fragment>*/}
-
-            {/*// <h3 className="text-center mt-5">Edit Device From</h3>*/}
-            {/*<form className="d-flex mt-5" onSubmit={onSubmitForm}>*/}
-            {/*    <p>*/}
-            {/*        <input*/}
-            {/*            type="text"*/}
-            {/*            placeholder="Model"*/}
-            {/*            className="form-control"*/}
-            {/*            value={model}*/}
-            {/*            onChange={e => setModel(e.target.value)}*/}
-            {/*        />*/}
-            {/*        <input*/}
-            {/*            type="text"*/}
-            {/*            placeholder="Country"*/}
-            {/*            className="form-control"*/}
-            {/*            value={country}*/}
-            {/*            onChange={e => setCountry(e.target.value)}*/}
-            {/*        />*/}
-            {/*        <input*/}
-            {/*            type="text"*/}
-            {/*            placeholder="Device"*/}
-            {/*            className="form-control"*/}
-            {/*            value={device}*/}
-            {/*            onChange={e => setDevice(e.target.value)}*/}
-            {/*        />*/}
-            {/*        <input*/}
-            {/*            type="text"*/}
-            {/*            placeholder="OEM"*/}
-            {/*            className="form-control"*/}
-            {/*            value={oem}*/}
-            {/*            onChange={e => setOem(e.target.value)}*/}
-            {/*        />*/}
-            {/*        <input*/}
-            {/*            type="text"*/}
-            {/*            placeholder="Count Ebay"*/}
-            {/*            className="form-control"*/}
-            {/*            value={count_ebay}*/}
-            {/*            onChange={e => setCountEbay(e.target.value)}*/}
-            {/*        />*/}
-            {/*        <input*/}
-            {/*            type="text"*/}
-            {/*            placeholder="Price Ebay"*/}
-            {/*            className="form-control"*/}
-            {/*            value={price_ebay}*/}
-            {/*            onChange={e => setPriceEbay(e.target.value)}*/}
-            {/*        />*/}
-            {/*    </p>*/}
-            {/*    <p>*/}
-            {/*        <input*/}
-            {/*            type="text"*/}
-            {/*            placeholder="Price Store"*/}
-            {/*            className="form-control"*/}
-            {/*            value={price_store}*/}
-            {/*            onChange={e => setPriceStore(e.target.value)}*/}
-            {/*        />*/}
-            {/*        <input*/}
-            {/*            type="text"*/}
-            {/*            placeholder="Count Store"*/}
-            {/*            className="form-control"*/}
-            {/*            value={count_store}*/}
-            {/*            onChange={e => setCountStore(e.target.value)}*/}
-            {/*        />*/}
-            {/*        <input*/}
-            {/*            type="text"*/}
-            {/*            placeholder="Date"*/}
-            {/*            className="form-control"*/}
-            {/*            value={datetime}*/}
-            {/*            onChange={e => setDateTime(e.target.value)}*/}
-            {/*        />*/}
-            {/*        <input*/}
-            {/*            type="text"*/}
-            {/*            placeholder="Link"*/}
-            {/*            className="form-control"*/}
-            {/*            value={link_adr}*/}
-            {/*            onChange={e => setLinkAdr(e.target.value)}*/}
-            {/*        />*/}
-            {/*        <input*/}
-            {/*            type="text"*/}
-            {/*            placeholder="Image"*/}
-            {/*            className="form-control"*/}
-            {/*            value={image}*/}
-            {/*            onChange={e => setImage(e.target.value)}*/}
-            {/*        />*/}
-            {/*        <button className="btn btn-success">Edit</button>*/}
-            {/*    </p>*/}
-
-            {/*</form>*/}
+                    <Button variant="primary" onClick={e => updateDevice(e)}>
+                        Save Changes
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </Fragment>
     );
 };
