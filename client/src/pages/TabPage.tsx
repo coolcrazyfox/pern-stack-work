@@ -131,6 +131,7 @@ const TabPage = () => {
                                           datetime={todo.datetime}
                                           link_adr={todo.link_adr}
                                           image={todo.image}
+                                          deleteDevice={deleteTodo}
                                 />
                             }
                             )

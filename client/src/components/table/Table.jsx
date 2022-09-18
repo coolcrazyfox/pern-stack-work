@@ -20,7 +20,7 @@ import {ToDo} from "../../pages/TabPage";
 // }
 
 
-const Table = ({model, country, device, oem, count_ebay, price_ebay, price_store, count_store, link_adr, image, datetime
+const Table = ({deleteDevice,model, country, device, oem, count_ebay, price_ebay, price_store, count_store, link_adr, image, datetime
                     }) => {
     // const [carModel, setCarModel]=useState(defaultCarItems)
 
@@ -53,7 +53,7 @@ const Table = ({model, country, device, oem, count_ebay, price_ebay, price_store
                     <a href={image}>image</a>
                 </td>
                 <td ><button>Edit</button></td>
-                <td ><button>Delete</button></td>
+                <td ><button onClick={deleteDevice}>Delete</button></td>
 
 
         </tr>
