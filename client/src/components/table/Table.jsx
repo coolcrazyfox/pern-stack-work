@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {ToDo} from "../../pages/TabPage";
+import EditTodo from "../EditTodo";
 // import s from '../../style/Table.module.css';
 
 
@@ -20,7 +21,7 @@ import {ToDo} from "../../pages/TabPage";
 // }
 
 
-const Table = ({deleteDevice,model, country, device, oem, count_ebay, price_ebay, price_store, count_store, link_adr, image, datetime
+const Table = ({todo, deleteDevice,model, country, device, oem, count_ebay, price_ebay, price_store, count_store, link_adr, image, datetime
                     }) => {
     // const [carModel, setCarModel]=useState(defaultCarItems)
 
@@ -52,12 +53,10 @@ const Table = ({deleteDevice,model, country, device, oem, count_ebay, price_ebay
                 <td >
                     <a href={image}>image</a>
                 </td>
-                <td >
-                    <button>
-                        Edit
-                    </button>
+                <td>
+                        <EditTodo todo={todo} />
                 </td>
-                <td >
+                <td>
                     <button
                         onClick={deleteDevice}
                     >

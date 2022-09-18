@@ -19,14 +19,14 @@ interface ToDo {
       model: string
       country?: string
       device?: string
-      oem?: string
+      oem: string
       count_ebay ?: string
       price_ebay ?: string
       price_store?: string
       count_store?: string
       link_adr?: string
       image ?: string
-      datetime ?: string   
+      datetime ?: string
 
   };
 }
@@ -42,9 +42,9 @@ const EditTodo = ({ todo }: ToDo) => {
   const [count_store, setCountStore] = useState("");
   const [link_adr, setLinkAdr] = useState("");
   const [image, setImage] = useState("");
-  const [datetime, setDateTime] = useState("");  
-  // const [description, setDescription] = useState(todo.description);
+  const [datetime, setDateTime] = useState("");
   const [open, setOpen] = React.useState(false);
+    console.log("edit todo",(todo))
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -60,8 +60,10 @@ const EditTodo = ({ todo }: ToDo) => {
     event.preventDefault();
     try {
       const body = { model
-        // ,
-        //  country, device, oem, count_ebay, price_ebay, price_store, count_store, link_adr, image, datetime 
+        ,
+        //  country, device,
+           oem
+          //  , count_ebay, price_ebay, price_store, count_store, link_adr, image, datetime
         };
       const response = await fetch(
         `http://localhost7000/device/${todo.id}`,
@@ -73,6 +75,7 @@ const EditTodo = ({ todo }: ToDo) => {
       );
       // window.location.href = "/";
       window.location.reload();
+        console.log("response",response)
     } catch (error) {
       console.error(error.message);
     }
@@ -139,7 +142,7 @@ const EditTodo = ({ todo }: ToDo) => {
               setDevice(event.target.value);
             }}
             fullWidth
-          />
+          />*/}
           <TextField
             autoFocus
             margin="normal"
@@ -151,7 +154,7 @@ const EditTodo = ({ todo }: ToDo) => {
             }}
             fullWidth
           />
-          <TextField
+            {/*<TextField
             autoFocus
             margin="normal"
             label="Edit count_ebay"

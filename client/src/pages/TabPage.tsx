@@ -7,9 +7,10 @@ import React, {Fragment, useEffect, useState} from 'react';
 import s from "../style/Table.module.css";
 // import Search from "../ui/search/Search";
 
-import ReactPaginate from "react-paginate";
-import Table from "../components/table/Table";
+// import ReactPaginate from "react-paginate";
+// import Table from "../components/table/Table";
 import {Pagination} from "../common/c12-Pagination/Pagination";
+import EditTodo from "../components/EditTodo";
 
 
 
@@ -75,7 +76,7 @@ const TabPage = () => {
     const firstIndex = lastIndex - devicePerPage
     const currentDevice = todos.slice(firstIndex, lastIndex)
     const paginate = (pageNum:number) => setCurrentPage(pageNum)
-    console.log('totalCount',todos.length)
+
 
     return (
         <Fragment>
@@ -119,20 +120,46 @@ const TabPage = () => {
                         // todos
                         // .sort((a, b) => +a.completed - +b.completed)
                         .map((todo) => {
-                            return <Table key={todo.id}
-                                              model={todo.model}
-                                              country={todo.country}
-                                              device={todo.device}
-                                              oem={todo.oem}
-                                              count_ebay={todo.count_ebay}
-                                              price_ebay={todo.price_ebay}
-                                              price_store={todo.price_store}
-                                          count_store={todo.count_store}
-                                          datetime={todo.datetime}
-                                          link_adr={todo.link_adr}
-                                          image={todo.image}
-                                          deleteDevice={deleteTodo}
-                                />
+                                return(
+                                    <tr key={todo.id}>
+                                    <td >{todo.model}</td>
+                                    <td >{todo.country}</td>
+                                    <td >{todo.device}</td>
+                                    <td >{todo.oem}</td>
+                                    <td >{todo.count_ebay}</td>
+                                    <td >{todo.price_ebay}</td>
+                                    <td >{todo.price_store}</td>
+                                    <td >{todo.count_store}</td>
+                                    <td >{todo.datetime}</td>
+                                    <td>
+                                        <EditTodo todo={todo} />
+                                    </td>
+                                    <td>
+                                        <button
+                                            className="btn btn-danger"
+                                            onClick={() => deleteTodo(todo.id)}
+                                        >
+                                            Delete
+                                        </button>
+                                    </td>
+                                </tr>)
+
+                            // return <Table key={todo.id}
+                            //                   model={todo.model}
+                            //                   country={todo.country}
+                            //                   device={todo.device}
+                            //                   oem={todo.oem}
+                            //                   count_ebay={todo.count_ebay}
+                            //                   price_ebay={todo.price_ebay}
+                            //                   price_store={todo.price_store}
+                            //               count_store={todo.count_store}
+                            //               datetime={todo.datetime}
+                            //               link_adr={todo.link_adr}
+                            //               image={todo.image}
+                            //               deleteDevice={deleteTodo}
+                            //               todo={todo}
+                            //
+                            //     />
                             }
                             )
                     }
