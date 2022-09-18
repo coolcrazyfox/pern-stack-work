@@ -44,7 +44,7 @@ const EditTodo = ({ todo }: ToDo) => {
   const [image, setImage] = useState("");
   const [datetime, setDateTime] = useState("");
   const [open, setOpen] = React.useState(false);
-    console.log("edit todo",(todo))
+
 
   const handleClickOpen = () => {
     setOpen(true);
