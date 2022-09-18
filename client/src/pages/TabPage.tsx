@@ -26,7 +26,7 @@ export interface ToDo {
     price_ebay: string
     price_store: string
     count_store: string
-    link_adr: string
+    link: string
     image: string
     datetime: string
 
@@ -136,7 +136,7 @@ const TabPage = () => {
                                         <td>{todo.count_store}</td>
                                         <td>{todo.datetime}</td>
                                         <td>
-                                            <a href={todo.link_adr}>
+                                            <a href={todo.link}>
                                                 <BsFillFolderSymlinkFill/>
                                             </a>
                                         </td>

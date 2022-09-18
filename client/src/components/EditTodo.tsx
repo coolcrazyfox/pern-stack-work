@@ -24,7 +24,7 @@ interface ToDo {
       price_ebay : string
       price_store: string
       count_store: string
-      link_adr: string
+      link: string
       image : string
       datetime : string
 
@@ -40,7 +40,7 @@ const EditTodo = ({ todo }: ToDo) => {
   const [price_ebay, setPriceEbay] = useState(todo.price_ebay);
   const [price_store, setPriceStore] = useState(todo.price_store);
   const [count_store, setCountStore] = useState(todo.count_store);
-  const [link_adr, setLinkAdr] = useState(todo.link_adr);
+  const [link, setLinkAdr] = useState(todo.link);
   const [image, setImage] = useState(todo.image);
   const [datetime, setDateTime] = useState(todo.datetime);
   const [open, setOpen] = React.useState(false);
@@ -59,7 +59,7 @@ const EditTodo = ({ todo }: ToDo) => {
   ) => {
     event.preventDefault();
     try {
-      const body = { model , country, device, oem, count_ebay, price_ebay, price_store, count_store, link_adr, image, datetime };
+      const body = { model , country, device, oem, count_ebay, price_ebay, price_store, count_store, link, image, datetime };
       const response = await fetch(
         `http://localhost7000/device/${todo.id}`,
         {
@@ -198,7 +198,7 @@ const EditTodo = ({ todo }: ToDo) => {
             margin="normal"
             label="Edit Link"
             variant="outlined"
-            value={link_adr}
+            value={link}
             onChange={(event) => {
               setLinkAdr(event.target.value);
             }}
