@@ -9,14 +9,14 @@ const InputDevice = () => {
   const [price_ebay, setPriceEbay] = useState("");
   const [price_store, setPriceStore] = useState("");
   const [count_store, setCountStore] = useState("");
-  const [link_adr, setLinkAdr] = useState("");
+  const [link, setLinkAdr] = useState("");
   const [image, setImage] = useState("");
   const [datetime, setDateTime] = useState("");
 
   const onSubmitForm = async e => {
     e.preventDefault();
     try {
-      const body = { model, country, device, oem, count_ebay, price_ebay, price_store, count_store, link_adr, image, datetime};
+      const body = { model, country, device, oem, count_ebay, price_ebay, price_store, count_store, link, image, datetime};
       const response = await fetch("http://localhost:7000/device", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -103,7 +103,7 @@ const InputDevice = () => {
               type="text"
               placeholder="Link"
               className="form-control"
-              value={link_adr}
+              value={link}
               onChange={e => setLinkAdr(e.target.value)}
           />
           <input

@@ -12,6 +12,7 @@ import s from "../style/Table.module.css";
 import {Pagination} from "../common/c12-Pagination/Pagination";
 import EditTodo from "../components/EditTodo";
 import EditDevice from "../components/EditDevice";
+import {BsFillFolderSymlinkFill, BsImage} from "react-icons/bs";
 
 
 // const data = OEM_DATA;
@@ -135,10 +136,14 @@ const TabPage = () => {
                                         <td>{todo.count_store}</td>
                                         <td>{todo.datetime}</td>
                                         <td>
-                                            <a href={todo.link_adr}>link</a>
+                                            <a href={todo.link_adr}>
+                                                <BsFillFolderSymlinkFill/>
+                                            </a>
                                         </td>
                                         <td>
-                                            <a href={todo.image}>image</a>
+                                            <a href={todo.image}>
+                                                <BsImage/>
+                                            </a>
                                         </td>
                                         <td>
                                             {/*<button onClick={()=><EditDevice todo={todo}/>}>Edit</button>*/}

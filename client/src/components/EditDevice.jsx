@@ -11,7 +11,7 @@ const EditDevice = ({todo}) => {
     const [price_ebay, setPriceEbay] = useState(todo.price_ebay);
     const [price_store, setPriceStore] = useState(todo.price_store);
     const [count_store, setCountStore] = useState(todo.count_store);
-    const [link_adr, setLinkAdr] = useState(todo.link_adr);
+    const [link, setLinkAdr] = useState(todo.link);
     const [image, setImage] = useState(todo.image);
     const [datetime, setDateTime] = useState(todo.datetime);
 
@@ -27,7 +27,7 @@ const EditDevice = ({todo}) => {
                 price_ebay,
                 price_store,
                 count_store,
-                link_adr,
+                link,
                 image,
                 datetime
             };
@@ -125,7 +125,7 @@ const EditDevice = ({todo}) => {
                         placeholder="Edit link"
                         type="text"
                         className="form-control"
-                        value={link_adr}
+                        value={link}
                         onChange={e => setLinkAdr(e.target.value)}
                     />
                     <input
