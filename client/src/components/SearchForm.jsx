@@ -11,6 +11,10 @@ const SearchForm = ({todo}) => {
     const values = [true, 'sm-down'];
     const [fullscreen, setFullscreen] = useState(true);
     const [show, setShow] = useState(false);
+    function handleShow(breakpoint) {
+        setFullscreen(breakpoint);
+        setShow(true);
+    }
 
     const [searchValue, setSearchValue]= useState('')
     const filterDevice=todo.filter((dev)=>{
@@ -18,15 +22,23 @@ const SearchForm = ({todo}) => {
     })
     return (
         <form>
-            <Button variant="primary" onClick={() => setShow(true)}>
-                Search
-            </Button>
+            <input type="text"
+                   placeholder='Search'
+                   // onClick={() => setShow(true)}
+                   onChange={(e)=>{
+                       return setShow(true)
+                       setSearchValue(e.target.value)}} />
+
+            {/*<Button variant="primary" onClick={() => setShow(true)}>*/}
+            {/*    Search*/}
+            {/*</Button>*/}
             <Modal
                 size="sm-down"
                 show={show}
+                fullscreen={fullscreen}
                 onHide={() => setShow(false)}
-                dialogClassName="modal-100w"
-                aria-labelledby="example-custom-modal-styling-title"
+                // dialogClassName="modal-100w"
+                // aria-labelledby="example-custom-modal-styling-title"
             >
                 <Modal.Header closeButton>
                     <Modal.Title id="example-custom-modal-styling-title">
