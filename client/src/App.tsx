@@ -18,7 +18,7 @@ function App() {
   return (
     <Fragment>
       <div className="main_container">
-             {/*<InputDevice/>*/}
+             <InputDevice/>
 
              <TabPage/>
 

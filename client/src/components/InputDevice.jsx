@@ -41,94 +41,126 @@ const InputDevice = () => {
           Input
         </Button>
 
-        <Modal show={show} onHide={handleClose} onClick={() => setModel(todo.model)}>
+        <Modal show={show} onHide={handleClose}
+        //  onClick={() => setModel(todo.model)}
+         >
           <Modal.Header closeButton>
             <Modal.Title>Input Device From</Modal.Title>
           </Modal.Header>
           <Modal.Body>
+            <span className="text-primary">Model
             <input
-                placeholder="Edit model"
+                placeholder="Send model"
                 type="text"
                 className="form-control"
                 value={model}
                 onChange={e => setModel(e.target.value)}
             />
-            <input
-                placeholder="Edit country"
+              </span>
+            <span className="text-primary">Country
+              <input
+                placeholder="Send country"
                 type="text"
                 className="form-control"
                 value={country}
                 onChange={e => setCountry(e.target.value)}
             />
-            <input
-                placeholder="Edit device"
-                type="text"
-                className="form-control"
-                value={device}
-                onChange={e => setDevice(e.target.value)}
-            />
-            <input
-                placeholder="Edit OEM"
-                type="text"
-                className="form-control"
-                value={oem}
-                onChange={e => setOem(e.target.value)}
-            />
-            <input
-                placeholder="Edit count_ebay"
-                type="text"
-                className="form-control"
-                value={count_ebay}
-                onChange={e => setCountEbay(e.target.value)}
-            />
-            <input
-                placeholder="Edit price_ebay"
-                type="text"
-                className="form-control"
-                value={price_ebay}
-                onChange={e => setPriceEbay(e.target.value)}
-            />
-            <input
-                placeholder="Edit price_store"
-                type="text"
-                className="form-control"
-                value={price_store}
-                onChange={e => setPriceStore(e.target.value)}
-            />
-            <input
-                placeholder="Edit count_store"
-                type="text"
-                className="form-control"
-                value={count_store}
-                onChange={e => setCountStore(e.target.value)}
-            />
-            <input
-                placeholder="Edit date"
-                type="text"
-                className="form-control"
-                value={datetime}
-                onChange={e => setDateTime(e.target.value)}
-            />
-            <input
-                placeholder="Edit link"
-                type="text"
-                className="form-control"
-                value={link}
-                onChange={e => setLink(e.target.value)}
-            />
-            <input
-                placeholder="Edit image"
-                type="text"
-                className="form-control"
-                value={image}
-                onChange={e => setImage(e.target.value)}
-            />
+            </span>
+            <span className="text-primary">Device
+              <input
+                  placeholder="Send device"
+                  type="text"
+                  className="form-control"
+                  value={device}
+                  onChange={e => setDevice(e.target.value)}
+              />
+            </span>
+            <span className="text-primary">OEM
+              <input
+                  placeholder="Send OEM"
+                  type="text"
+                  className="form-control"
+                  value={oem}
+                  onChange={e => setOem(e.target.value)}
+              />
+            </span>
+            <span className="text-primary">Count_ebay
+              <input
+                  placeholder="Send count_ebay"
+                  type="text"
+                  className="form-control"
+                  value={count_ebay}
+                  onChange={e => setCountEbay(e.target.value)}
+              />
+            </span>
+            <span className="text-primary">Price_ebay
+              <input
+                  placeholder="Send price_ebay"
+                  type="text"
+                  className="form-control"
+                  value={price_ebay}
+                  onChange={e => setPriceEbay(e.target.value)}
+              />
+            </span>
+            <span className="text-primary">Price_store
+              <input
+                  placeholder="Send price_store"
+                  type="text"
+                  className="form-control"
+                  value={price_store}
+                  onChange={e => setPriceStore(e.target.value)}
+              />
+            </span>
+            <span className="text-primary">Count_store
+              <input
+                  placeholder="Send count_store"
+                  type="text"
+                  className="form-control"
+                  value={count_store}
+                  onChange={e => setCountStore(e.target.value)}
+              />
+            </span>
+            <span className="text-primary">Date
+              <input
+                  placeholder="Send date"
+                  type="text"
+                  className="form-control"
+                  value={datetime}
+                  onChange={e => setDateTime(e.target.value)}
+              />
+            </span>
+            <span className="text-primary">Link
+              <input
+                  placeholder="Send link"
+                  type="text"
+                  className="form-control"
+                  value={link}
+                  onChange={e => setLink(e.target.value)}
+              />
+            </span>
+            <span className="text-primary">Image
+              <input
+                  placeholder="Send image"
+                  type="text"
+                  className="form-control"
+                  value={image}
+                  onChange={e => setImage(e.target.value)}
+              />
+            </span>
 
           </Modal.Body>
           <Modal.Footer>
-            {/*<Button variant="warning" onClick={() => setModel(todo.model)}>*/}
-            {/*    Close*/}
-            {/*</Button>*/}
+            {/* <Button variant="warning" onClick={() => {
+              return (
+                setModel(model)
+                setCountry(country)
+                setDevice(devive)
+                setModel()
+                setModel(todo.model)
+                setModel(todo.model)
+                )}}>
+               Close
+            </Button>  */}
             <div size="sm">
               <Button variant="primary" onClick={e => onSubmitForm(e)} size="sm">
                 Add

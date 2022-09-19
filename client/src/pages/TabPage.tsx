@@ -11,6 +11,7 @@ import EditDevice from "../components/EditDevice";
 import {BsFillFolderSymlinkFill, BsImage} from "react-icons/bs";
 import {FcSearch} from "react-icons/fc"
 import InputDevice from "../components/InputDevice";
+import SearchForm from "../components/SearchForm";
 
 export interface ToDo {
     id: string
@@ -72,12 +73,19 @@ const TabPage = () => {
 
     }, []);
 
+    // pagination
+
     const lastIndex = currentPage * devicePerPage
     const firstIndex = lastIndex - devicePerPage
     const currentDevice = todos.slice(firstIndex, lastIndex)
     const paginate = (pageNum: number) => setCurrentPage(pageNum)
 
+    //search
 
+    // const [searchValue, setSearchValue]= useState('')
+    // const filterDevice=todos.filter((dev)=>{
+    //     return dev.oem.toLowerCase().includes(searchValue.toLowerCase())
+    // })
     return (
         <Fragment>
             {/*{loading && <Loader/>}*/}
@@ -85,14 +93,20 @@ const TabPage = () => {
 
             <div className={s.tab_container}>
                 <div className={s.header_title_tab}>
-                    <InputDevice/>
+                    {/* <InputDevice/> */}
                     <Pagination totalCount={todos.length}
 
                                 pageSize={devicePerPage}
                                 currentPage={currentPage}
                                 onChangedPage={paginate}/>
+                    <SearchForm todo={todos}/>
                     {/*<Search/>*/}
-                    <FcSearch/>
+                    {/* <span className={s.span_icon}><FcSearch className={s.span_icon}/></span> */}
+                    {/*<form  className={s.searchbox} action="#">*/}
+                    {/*    <input type="text" placeholder='Search' onChange={(e)=>{setSearchValue(e.target.value)}} />*/}
+                    {/*</form>*/}
+
+
                 </div>
 
                 <table className={s.table}>
@@ -122,7 +136,10 @@ const TabPage = () => {
                     {/*    totalDevice={todos.length}*/}
                     {/*    paginate={paginate}*/}
                     {/*/>*/}
-                    {currentDevice
+                    {
+                        // filterDevice
+                        // &&
+                    currentDevice
                         // todos
                         // .sort((a, b) => +a.completed - +b.completed)
                         .map((todo) => {
