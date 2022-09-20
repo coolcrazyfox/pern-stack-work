@@ -14,6 +14,7 @@ import InputDevice from "../components/InputDevice";
 import SearchForm from "../components/SearchForm";
 import Search from "../components/search/Search";
 import SearchInput from "../components/search/SearchInput";
+import PaginationReact from "../components/pagination/PaginationReact";
 
 export interface ToDo {
     id: string
@@ -90,6 +91,7 @@ const TabPage = () => {
     const filterDevice=todos.filter((dev)=>{
         return dev.oem.toLowerCase().includes(searchValue.toLowerCase())
     })
+
     return (
         <Fragment>
             {/*{loading && <Loader/>}*/}
@@ -98,11 +100,13 @@ const TabPage = () => {
             <div className={s.tab_container}>
                 <div className={s.header_title_tab}>
                     {/* <InputDevice/> */}
-                    <Pagination totalCount={todos.length}
+                    <PaginationReact/>
 
-                                pageSize={devicePerPage}
-                                currentPage={currentPage}
-                                onChangedPage={paginate}/>
+                    {/*<Pagination totalCount={todos.length}*/}
+
+                    {/*            pageSize={devicePerPage}*/}
+                    {/*            currentPage={currentPage}*/}
+                    {/*            onChangedPage={paginate}/>*/}
                     <SearchInput searchValue={searchValue} setSearchValue={setSearchValue}/>
                     {/*<SearchForm todo={todos}/>*/}
                     {/*<Search todos={todos}/>*/}
