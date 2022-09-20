@@ -43,7 +43,7 @@ const TabPage = () => {
     console.log('serch',searchValue)
     const [loading, setLoading] = useState(false)
     const [currentPage, setCurrentPage] = useState(1)
-    const [devicePerPage] = useState(10)
+    const [devicePerPage] = useState(5)
 
     const getTodos = async () => {
         try {
@@ -100,7 +100,11 @@ const TabPage = () => {
             <div className={s.tab_container}>
                 <div className={s.header_title_tab}>
                     {/* <InputDevice/> */}
-                    <PaginationReact/>
+                    <PaginationReact onChangedPage={currentDevice}
+                                     totalCount={todos.length}
+                                     pageSize={devicePerPage}
+                                     currentPage={currentPage}
+                    />
 
                     {/*<Pagination totalCount={todos.length}*/}
 
