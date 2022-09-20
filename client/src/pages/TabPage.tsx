@@ -13,6 +13,7 @@ import {FcSearch} from "react-icons/fc"
 import InputDevice from "../components/InputDevice";
 import SearchForm from "../components/SearchForm";
 import Search from "../components/search/Search";
+import SearchInput from "../components/search/SearchInput";
 
 export interface ToDo {
     id: string
@@ -37,6 +38,8 @@ export const baseUrl = "http://localhost:7000/device"
 
 const TabPage = () => {
     const [todos, setTodos] = useState<ToDoContainer>([]);
+    const [searchValue, setSearchValue]= useState('')
+    console.log('serch',searchValue)
     const [loading, setLoading] = useState(false)
     const [currentPage, setCurrentPage] = useState(1)
     const [devicePerPage] = useState(10)
@@ -84,9 +87,9 @@ const TabPage = () => {
     //search
 
     // const [searchValue, setSearchValue]= useState('')
-    // const filterDevice=todos.filter((dev)=>{
-    //     return dev.oem.toLowerCase().includes(searchValue.toLowerCase())
-    // })
+    const filterDevice=todos.filter((dev)=>{
+        return dev.oem.toLowerCase().includes(searchValue.toLowerCase())
+    })
     return (
         <Fragment>
             {/*{loading && <Loader/>}*/}
@@ -100,6 +103,7 @@ const TabPage = () => {
                                 pageSize={devicePerPage}
                                 currentPage={currentPage}
                                 onChangedPage={paginate}/>
+                    <SearchInput searchValue={searchValue} setSearchValue={setSearchValue}/>
                     {/*<SearchForm todo={todos}/>*/}
                     {/*<Search todos={todos}/>*/}
                     {/* <span className={s.span_icon}><FcSearch className={s.span_icon}/></span> */}
@@ -138,9 +142,9 @@ const TabPage = () => {
                     {/*    paginate={paginate}*/}
                     {/*/>*/}
                     {
-                        // filterDevice
+                        filterDevice
 
-                    currentDevice
+                    // currentDevice
                         // todos
                         // .sort((a, b) => +a.completed - +b.completed)
                         .map((todo) => {
