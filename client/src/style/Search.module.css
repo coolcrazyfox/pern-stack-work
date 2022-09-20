@@ -48,8 +48,8 @@
     width: 30px;
     /*right: 10px;*/
     border: none;
-    /*background: #1b2616;*/
-    background: url(/src/ui/search/IconSearch.svg) no-repeat center/contain;
+    background: #1b2616;
+    /*background: url(/src/ui/search/IconSearch.svg) no-repeat center/contain;*/
     cursor: pointer;
     z-index: 2;
     top: 25%;

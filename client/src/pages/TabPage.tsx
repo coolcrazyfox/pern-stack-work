@@ -12,6 +12,7 @@ import {BsFillFolderSymlinkFill, BsImage} from "react-icons/bs";
 import {FcSearch} from "react-icons/fc"
 import InputDevice from "../components/InputDevice";
 import SearchForm from "../components/SearchForm";
+import Search from "../components/search/Search";
 
 export interface ToDo {
     id: string
@@ -99,11 +100,11 @@ const TabPage = () => {
                                 pageSize={devicePerPage}
                                 currentPage={currentPage}
                                 onChangedPage={paginate}/>
-                    <SearchForm todo={todos}/>
-                    {/*<Search/>*/}
+                    {/*<SearchForm todo={todos}/>*/}
+                    {/*<Search todos={todos}/>*/}
                     {/* <span className={s.span_icon}><FcSearch className={s.span_icon}/></span> */}
                     {/*<form  className={s.searchbox} action="#">*/}
-                    {/*    <input type="text" placeholder='Search' onChange={(e)=>{setSearchValue(e.target.value)}} />*/}
+                    {/*    <input type="text" placeholder='Search' onChange={(e)=>{setSearchValue(e.currentTarget.value)}} />*/}
                     {/*</form>*/}
 
 
@@ -138,7 +139,7 @@ const TabPage = () => {
                     {/*/>*/}
                     {
                         // filterDevice
-                        // &&
+
                     currentDevice
                         // todos
                         // .sort((a, b) => +a.completed - +b.completed)
