@@ -1,4 +1,4 @@
-import React, {Fragment, useEffect, useState} from 'react';
+import React, {Fragment, useEffect, useRef, useState} from 'react';
 
 // import ErrorMessage from '../ui/components/ErrorMessage';
 // import Loader from '../ui/components/Loader';
@@ -15,6 +15,7 @@ import SearchForm from "../components/SearchForm";
 import Search from "../components/search/Search";
 import SearchInput from "../components/search/SearchInput";
 import PaginationReact from "../components/pagination/PaginationReact";
+import {useScroll} from "../hook/useScroll";
 
 export interface ToDo {
     id: string
@@ -46,6 +47,9 @@ const TabPage = () => {
 
     // scroll
     const hasScroll = todos.length >3
+    const todoWrapper = useRef()
+    useScroll(todoWrapper, hasScroll)
+
 
     const getTodos = async () => {
         try {
