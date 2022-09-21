@@ -40,13 +40,13 @@ export const baseUrl = "http://localhost:7000/device"
 
 const TabPage = () => {
     const [todos, setTodos] = useState<ToDoContainer>([]);
-    const [searchValue, setSearchValue]= useState('')
+    const [searchValue, setSearchValue] = useState('')
     const [loading, setLoading] = useState(false)
     const [currentPage, setCurrentPage] = useState(1)
     const [devicePerPage] = useState(6)
 
     // scroll
-    const hasScroll = todos.length >3
+    const hasScroll = todos.length > 3
     const todoWrapper = useRef(null)
     useScroll(todoWrapper, hasScroll)
 
@@ -94,7 +94,7 @@ const TabPage = () => {
     //search
 
     // const [searchValue, setSearchValue]= useState('')
-    const filterDevice=todos.filter((dev)=>{
+    const filterDevice = todos.filter((dev) => {
         return dev.oem.toLowerCase().includes(searchValue.toLowerCase())
     })
 
@@ -114,9 +114,9 @@ const TabPage = () => {
 
                     <Pagination totalCount={todos.length}
 
-                           pageSize={devicePerPage}
-                              currentPage={currentPage}
-                               onChangedPage={paginate}/>
+                                pageSize={devicePerPage}
+                                currentPage={currentPage}
+                                onChangedPage={paginate}/>
 
                     <SearchInput searchValue={searchValue} setSearchValue={setSearchValue}/>
 
@@ -131,38 +131,7 @@ const TabPage = () => {
                 </div>
 
                 <table className={s.table_first}>
-
-                        <thead>
-
-                        <tr>
-                            <th>Model</th>
-                            <th>Country</th>
-                            <th>Device</th>
-                            <th>OEM</th>
-                            <th>Count_ebay</th>
-                            <th>Price_ebay $</th>
-                            <th>Price_store $</th>
-                            <th>Count_store</th>
-                            <th>Date</th>
-                            <th>Link</th>
-                            <th>Image</th>
-                            <th>Edit</th>
-                            <th>Delete</th>
-
-                        </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-
-                </table>
-
-                <table className={s.table}>
-
-                    <div style={{height: hasScroll ? '400px': 'auto', minHeight: '120px'}} ref={todoWrapper}>
-
-
                     <thead>
-
                     <tr>
                         <th>Model</th>
                         <th>Country</th>
@@ -177,16 +146,41 @@ const TabPage = () => {
                         <th>Image</th>
                         <th>Edit</th>
                         <th>Delete</th>
-
                     </tr>
                     </thead>
                     <tbody>
+                    </tbody>
 
-                    {/*<Pagination*/}
-                    {/*    devicePerPage={devicePerPage}*/}
-                    {/*    totalDevice={todos.length}*/}
-                    {/*    paginate={paginate}*/}
-                    {/*/>*/}
+                </table>
+
+                <table className={s.table}>
+
+                    <div style={{height: hasScroll ? '430px' : 'auto', minHeight: '120px'}} ref={todoWrapper}>
+
+                        <thead>
+                        <tr>
+                            <th>Model</th>
+                            <th>Country</th>
+                            <th>Device</th>
+                            <th>OEM</th>
+                            <th>Count_ebay</th>
+                            <th>Price_ebay $</th>
+                            <th>Price_store $</th>
+                            <th>Count_store</th>
+                            <th>Date</th>
+                            <th>Link</th>
+                            <th>Image</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {/*<Pagination*/}
+                        {/*    devicePerPage={devicePerPage}*/}
+                        {/*    totalDevice={todos.length}*/}
+                        {/*    paginate={paginate}*/}
+                        {/*/>*/}
 
                         {
                             filterDevice
@@ -207,7 +201,7 @@ const TabPage = () => {
                                                 <td>{todo.count_store}</td>
                                                 <td>{todo.datetime}</td>
                                                 <td>
-                                                    <a  href={todo.link}>
+                                                    <a href={todo.link}>
                                                         <BsFillFolderSymlinkFill/>
                                                     </a>
                                                 </td>
@@ -256,7 +250,7 @@ const TabPage = () => {
                 </table>
 
 
-                </div>
+            </div>
         </Fragment>
     );
 };
