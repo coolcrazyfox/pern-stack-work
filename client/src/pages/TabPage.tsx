@@ -130,6 +130,32 @@ const TabPage = () => {
 
                 </div>
 
+                <table className={s.table_first}>
+
+                        <thead>
+
+                        <tr>
+                            <th>Model</th>
+                            <th>Country</th>
+                            <th>Device</th>
+                            <th>OEM</th>
+                            <th>Count_ebay</th>
+                            <th>Price_ebay $</th>
+                            <th>Price_store $</th>
+                            <th>Count_store</th>
+                            <th>Date</th>
+                            <th>Link</th>
+                            <th>Image</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+
+                </table>
+
                 <table className={s.table}>
 
                     <div style={{height: hasScroll ? '400px': 'auto', minHeight: '120px'}} ref={todoWrapper}>
@@ -230,7 +256,7 @@ const TabPage = () => {
                 </table>
 
 
-            </div>
+                </div>
         </Fragment>
     );
 };
