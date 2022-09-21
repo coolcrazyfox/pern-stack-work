@@ -6,6 +6,7 @@ import s from '../../style/PaginationReact.module.css'
 // https://russianblogs.com/article/5976993373/
 
 const PaginationReact = ({onChangedPage, totalCount, pageSize, currentPage}) => {
+    console.log('selected btn', onChangedPage)
     const pageCounts = totalCount ? Math.ceil(totalCount / pageSize) : currentPage;
     const step = pageCounts > 200 ? 50 : 10;
     return (
@@ -14,11 +15,11 @@ const PaginationReact = ({onChangedPage, totalCount, pageSize, currentPage}) => 
                 className={s.root}
                 breakLabel="..."
                 nextLabel=">"
-                onPageChange={e=>onChangedPage(e.selected)}
+                onPageChange={e=>onChangedPage(e.selected+1)}
                 pageRangeDisplayed={pageSize}
                 pageCount={pageCounts}
                 previousLabel="<"
-                renderOnZeroPageCount={null}
+                forcePage={currentPage - 1}
             />
         </div>
     );

@@ -40,10 +40,12 @@ export const baseUrl = "http://localhost:7000/device"
 const TabPage = () => {
     const [todos, setTodos] = useState<ToDoContainer>([]);
     const [searchValue, setSearchValue]= useState('')
-    console.log('serch',searchValue)
     const [loading, setLoading] = useState(false)
     const [currentPage, setCurrentPage] = useState(1)
-    const [devicePerPage] = useState(5)
+    const [devicePerPage] = useState(6)
+
+    // scroll
+    const hasScroll = todos.length >3
 
     const getTodos = async () => {
         try {
@@ -100,18 +102,20 @@ const TabPage = () => {
             <div className={s.tab_container}>
                 <div className={s.header_title_tab}>
                     {/* <InputDevice/> */}
-                    <PaginationReact onChangedPage={currentDevice}
+                    {/* <PaginationReact onChangedPage={paginate}
                                      totalCount={todos.length}
                                      pageSize={devicePerPage}
                                      currentPage={currentPage}
-                    />
+                    /> */}
 
-                    {/*<Pagination totalCount={todos.length}*/}
+                    <Pagination totalCount={todos.length}
 
-                    {/*            pageSize={devicePerPage}*/}
-                    {/*            currentPage={currentPage}*/}
-                    {/*            onChangedPage={paginate}/>*/}
+                           pageSize={devicePerPage}
+                              currentPage={currentPage}
+                               onChangedPage={paginate}/>
+
                     <SearchInput searchValue={searchValue} setSearchValue={setSearchValue}/>
+
                     {/*<SearchForm todo={todos}/>*/}
                     {/*<Search todos={todos}/>*/}
                     {/* <span className={s.span_icon}><FcSearch className={s.span_icon}/></span> */}
