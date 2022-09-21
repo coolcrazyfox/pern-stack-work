@@ -47,7 +47,7 @@ const TabPage = () => {
 
     // scroll
     const hasScroll = todos.length >3
-    const todoWrapper = useRef()
+    const todoWrapper = useRef(null)
     useScroll(todoWrapper, hasScroll)
 
 
@@ -131,6 +131,10 @@ const TabPage = () => {
                 </div>
 
                 <table className={s.table}>
+
+                    <div style={{height: hasScroll ? '400px': 'auto', minHeight: '120px'}} ref={todoWrapper}>
+
+
                     <thead>
 
                     <tr>
@@ -157,70 +161,74 @@ const TabPage = () => {
                     {/*    totalDevice={todos.length}*/}
                     {/*    paginate={paginate}*/}
                     {/*/>*/}
-                    {
-                        filterDevice
 
-                    // currentDevice
-                        // todos
-                        // .sort((a, b) => +a.completed - +b.completed)
-                        .map((todo) => {
-                                return (
-                                    <tr key={todo.id}>
-                                        <td>{todo.model}</td>
-                                        <td>{todo.country}</td>
-                                        <td>{todo.device}</td>
-                                        <td>{todo.oem}</td>
-                                        <td>{todo.count_ebay}</td>
-                                        <td>{todo.price_ebay}</td>
-                                        <td>{todo.price_store}</td>
-                                        <td>{todo.count_store}</td>
-                                        <td>{todo.datetime}</td>
-                                        <td>
-                                            <a  href={todo.link}>
-                                                <BsFillFolderSymlinkFill/>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a href={todo.image}>
-                                                <BsImage/>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            {/*<button onClick={()=><EditDevice todo={todo}/>}>Edit</button>*/}
-                                            <EditDevice todo={todo}/>
-                                        </td>
-                                        <td>
-                                            <button
-                                                className="btn btn-danger"
-                                                onClick={() => deleteTodo(todo.id)}
-                                            >
-                                                Delete
-                                            </button>
-                                        </td>
-                                    </tr>)
+                        {
+                            filterDevice
 
-                                // return <Table key={todo.id}
-                                //                   model={todo.model}
-                                //                   country={todo.country}
-                                //                   device={todo.device}
-                                //                   oem={todo.oem}
-                                //                   count_ebay={todo.count_ebay}
-                                //                   price_ebay={todo.price_ebay}
-                                //                   price_store={todo.price_store}
-                                //               count_store={todo.count_store}
-                                //               datetime={todo.datetime}
-                                //               link_adr={todo.link_adr}
-                                //               image={todo.image}
-                                //               deleteDevice={deleteTodo}
-                                //               todo={todo}
-                                //
-                                //     />
-                            }
-                        )
-                    }
+                                // currentDevice
+                                // todos
+                                // .sort((a, b) => +a.completed - +b.completed)
+                                .map((todo) => {
+                                        return (
+                                            <tr key={todo.id}>
+                                                <td>{todo.model}</td>
+                                                <td>{todo.country}</td>
+                                                <td>{todo.device}</td>
+                                                <td>{todo.oem}</td>
+                                                <td>{todo.count_ebay}</td>
+                                                <td>{todo.price_ebay}</td>
+                                                <td>{todo.price_store}</td>
+                                                <td>{todo.count_store}</td>
+                                                <td>{todo.datetime}</td>
+                                                <td>
+                                                    <a  href={todo.link}>
+                                                        <BsFillFolderSymlinkFill/>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a href={todo.image}>
+                                                        <BsImage/>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    {/*<button onClick={()=><EditDevice todo={todo}/>}>Edit</button>*/}
+                                                    <EditDevice todo={todo}/>
+                                                </td>
+                                                <td>
+                                                    <button
+                                                        className="btn btn-danger"
+                                                        onClick={() => deleteTodo(todo.id)}
+                                                    >
+                                                        Delete
+                                                    </button>
+                                                </td>
+                                            </tr>)
 
-                    </tbody>
+                                        // return <Table key={todo.id}
+                                        //                   model={todo.model}
+                                        //                   country={todo.country}
+                                        //                   device={todo.device}
+                                        //                   oem={todo.oem}
+                                        //                   count_ebay={todo.count_ebay}
+                                        //                   price_ebay={todo.price_ebay}
+                                        //                   price_store={todo.price_store}
+                                        //               count_store={todo.count_store}
+                                        //               datetime={todo.datetime}
+                                        //               link_adr={todo.link_adr}
+                                        //               image={todo.image}
+                                        //               deleteDevice={deleteTodo}
+                                        //               todo={todo}
+                                        //
+                                        //     />
+                                    }
+                                )
+                        }
+
+
+                        </tbody>
+                    </div>
                 </table>
+
 
             </div>
         </Fragment>
