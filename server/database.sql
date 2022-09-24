@@ -33,7 +33,7 @@ CREATE TABLE analogtab(
 CREATE TABLE ebaytab(
     id SERIAL NOT NULL PRIMARY KEY,
     model VARCHAR(50),
-    country VARCHAR(50) DEFAULT Germany,
+    country VARCHAR(50) DEFAULT 0,
     device VARCHAR(170) NOT NULL,
     oem VARCHAR(100) NOT NULL,
     count VARCHAR(300),

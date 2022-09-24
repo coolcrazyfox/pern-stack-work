@@ -17,29 +17,27 @@ import SearchInput from "../components/search/SearchInput";
 import PaginationReact from "../components/pagination/PaginationReact";
 import {useScroll} from "../hook/useScroll";
 
-export interface ToDo {
+export interface EbayTable {
     id: string
     model: string
     country: string
     device: string
     oem: string
-    count_ebay: string
-    price_ebay: string
-    price_store: string
-    count_store: string
+    count: string
+    price: string
     link: string
     image: string
     datetime: string
 
 }
 
-interface ToDoContainer extends Array<ToDo> {
+interface EbayContainer extends Array<EbayTable> {
 }
 
-export const baseUrl = "http://localhost:7000/device"
+export const baseUrl = "http://localhost:7000/device/ebay"
 
 const TabPage = () => {
-    const [todos, setTodos] = useState<ToDoContainer>([]);
+    const [todos, setTodos] = useState<EbayContainer>([]);
     const [searchValue, setSearchValue] = useState('')
     const [loading, setLoading] = useState(false)
     const [currentPage, setCurrentPage] = useState(1)
@@ -67,7 +65,7 @@ const TabPage = () => {
     const deleteTodo = async (id: string) => {
         try {
             const deleteTodo = await fetch(
-                `http://localhost:7000/device/${id}`,
+                `http://localhost:7000/device/ebay/${id}`,
                 {
                     method: "DELETE",
                 }
@@ -102,6 +100,7 @@ const TabPage = () => {
         <Fragment>
             {/*{loading && <Loader/>}*/}
             {/*{error && <ErrorMessage error={error}/>}*/}
+            <div> Ebay Table Form</div>
 
             <div className={s.tab_container}>
                 <div className={s.header_title_tab}>
@@ -139,8 +138,6 @@ const TabPage = () => {
                         <th>OEM</th>
                         <th>Count_ebay</th>
                         <th>Price_ebay $</th>
-                        <th>Price_store $</th>
-                        <th>Count_store</th>
                         <th>Date</th>
                         <th>Link</th>
                         <th>Image</th>
@@ -165,8 +162,6 @@ const TabPage = () => {
                             <th>OEM</th>
                             <th>Count_ebay</th>
                             <th>Price_ebay $</th>
-                            <th>Price_store $</th>
-                            <th>Count_store</th>
                             <th>Date</th>
                             <th>Link</th>
                             <th>Image</th>
@@ -195,10 +190,8 @@ const TabPage = () => {
                                                 <td>{todo.country}</td>
                                                 <td>{todo.device}</td>
                                                 <td>{todo.oem}</td>
-                                                <td>{todo.count_ebay}</td>
-                                                <td>{todo.price_ebay}</td>
-                                                <td>{todo.price_store}</td>
-                                                <td>{todo.count_store}</td>
+                                                <td>{todo.count}</td>
+                                                <td>{todo.price}</td>
                                                 <td>{todo.datetime}</td>
                                                 <td>
                                                     <a href={todo.link}>
