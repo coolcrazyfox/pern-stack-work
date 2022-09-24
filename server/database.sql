@@ -33,7 +33,7 @@ CREATE TABLE analogtab(
 CREATE TABLE ebaytab(
     id SERIAL NOT NULL PRIMARY KEY,
     model VARCHAR(50),
-    country VARCHAR(50) DEFAULT 0,
+    country VARCHAR(50) ,
     device VARCHAR(170) NOT NULL,
     oem VARCHAR(100) NOT NULL,
     count VARCHAR(300),
@@ -45,7 +45,7 @@ CREATE TABLE ebaytab(
 CREATE TABLE bampertab(
     id SERIAL NOT NULL PRIMARY KEY,
     model VARCHAR(50),
-    country VARCHAR(50) DEFAULT Belarus,
+    country VARCHAR(50) ,
     device VARCHAR(170) NOT NULL,
     oem VARCHAR(100) NOT NULL,
     count VARCHAR(300),
@@ -57,7 +57,7 @@ CREATE TABLE bampertab(
 CREATE TABLE avitatab(
     id SERIAL NOT NULL PRIMARY KEY,
     model VARCHAR(50),
-    country VARCHAR(50) DEFAULT Russia,
+    country VARCHAR(50) ,
     device VARCHAR(170) NOT NULL,
     oem VARCHAR(100) NOT NULL,
     count VARCHAR(300),
@@ -69,7 +69,7 @@ CREATE TABLE avitatab(
 CREATE TABLE storetab(
     id SERIAL NOT NULL PRIMARY KEY,
     model VARCHAR(50),
-    country VARCHAR(50) DEFAULT Belarus,
+    country VARCHAR(50) ,
     device VARCHAR(170) NOT NULL,
     oem VARCHAR(100) NOT NULL,
     count VARCHAR(300),

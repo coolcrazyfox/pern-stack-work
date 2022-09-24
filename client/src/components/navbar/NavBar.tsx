@@ -36,13 +36,31 @@ const NavBar = () => {
                     <Link to='/'>Home</Link>
                 </li>
                 <li>
-                    <Link to='/pricing'>Pricing</Link>
+                    <Link to='/manual'>Manual</Link>
                 </li>
                 <li>
-                    <Link to='/training'>Training</Link>
+                    <Link to='/analog'>Analog</Link>
+                </li>
+                <li>
+                    <Link to='/all'>All</Link>
+                </li>
+                <li>
+                    <Link to='/store'>Store</Link>
+                </li>
+                <li>
+                    <Link to='/bamper'>Bamper</Link>
+                </li>
+                <li>
+                    <Link to='/avita'>Avita</Link>
                 </li>
                 <li>
                     <Link to='/contact'>Contact</Link>
+                </li>
+                <li>
+                    <Link to='/signin'>Sign In</Link>
+                </li>
+                <li>
+                    <Link to='/login'>Log In</Link>
                 </li>
             </ul>
             <div className="hamburger" onClick={handleClick}>
