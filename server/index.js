@@ -26,6 +26,8 @@ app.use(function (req, res, next) {
 //
 // })
 
+
+// all site table
 // create device
 app.post("/device/all", async (req, res) => {
     try {
@@ -139,6 +141,102 @@ app.delete("/device/all/:id", async (req, res) => {
     }
 })
 
+
+//analog table
+// create analog device
+app.post("/device/analog", async (req, res) => {
+    try {
+        const {
+            model,
+            device,
+            analog_oem,
+            link,
+            image,
+            datetime
+        } = req.body
+        const newTodo = await pool.query("INSERT INTO analogtab (model, device, analog_oem, link, image, datetime) VALUES ($1, $2, $3, $4, $5, $6 ) RETURNING *",
+            [
+                model,
+                device,
+                analog_oem,
+                link,
+                image,
+                datetime
+            ])
+        res.json(newTodo.rows[0])
+    } catch (error) {
+        console.error(error.message)
+    }
+})
+
+// get all analog device
+app.get("/device/analog", async (req, res) => {
+    try {
+        const allTodos = await pool.query("SELECT * FROM analogtab")
+        res.json(allTodos.rows)
+    } catch (error) {
+        console.error(error.message)
+    }
+})
+
+// get a analog device
+app.get("/device/analog/:id", async (req, res) => {
+    try {
+        const {
+            id
+        } = req.params;
+        const deviceItem = await pool.query("SELECT * FROM analogtab WHERE id = $1", [id])
+        res.json(deviceItem.rows[0])
+    } catch (error) {
+        console.error(error.message)
+    }
+})
+
+// update a analog device
+app.put("/device/analog/:id", async (req, res) => {
+    try {
+        const {
+            id
+        } = req.params;
+        const {
+            model,
+            device,
+            analog_oem,
+            link,
+            image,
+            datetime
+        } = req.body;
+        const updateDevice = await pool.query("UPDATE  analogtab SET model = $1 ,  device = $2, analog_oem = $3,  link = $4, image = $5, datetime = $6 WHERE id = $7",
+            [
+                model,
+                device,
+                analog_oem,
+                link,
+                image,
+                datetime,
+                id
+            ])
+        res.json("device was updated in analogTab")
+    } catch (error) {
+        console.error(error.message)
+    }
+})
+
+// delete a analog device
+app.delete("/device/analog/:id", async (req, res) => {
+    try {
+        const {
+            id
+        } = req.params;
+        const deleteTodo = await pool.query("DELETE FROM analogtab WHERE id = $1", [id])
+        res.json("device was deleted in analogTab!")
+    } catch (error) {
+        console.error(error.message)
+    }
+})
+
+
+//ebay table
 // create ebay device
 app.post("/device/ebay", async (req, res) => {
     try {
@@ -147,24 +245,24 @@ app.post("/device/ebay", async (req, res) => {
             country,
             device,
             oem,
-            count_ebay,
-            price_ebay,
-            price_store,
-            count_store,
+            count,
+            price,
+            // price_store,
+            // count_store,
             link,
             image,
             datetime
         } = req.body
-        const newTodo = await pool.query("INSERT INTO ebaytab (model, country, device, oem, count_ebay, price_ebay, price_store, count_store, link, image, datetime) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11 ) RETURNING *",
+        const newTodo = await pool.query("INSERT INTO ebaytab (model, country, device, oem, count, price,  link, image, datetime) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9 ) RETURNING *",
             [
                 model,
                 country,
                 device,
                 oem,
-                count_ebay,
-                price_ebay,
-                price_store,
-                count_store,
+                count,
+                price,
+                // price_store,
+                // count_store,
                 link,
                 image,
                 datetime
@@ -209,24 +307,24 @@ app.put("/device/ebay/:id", async (req, res) => {
             country,
             device,
             oem,
-            count_ebay,
-            price_ebay,
-            price_store,
-            count_store,
+            count,
+            price,
+            // price_store,
+            // count_store,
             link,
             image,
             datetime
         } = req.body;
-        const updateDevice = await pool.query("UPDATE  ebaytab SET model = $1 , country = $2, device = $3, oem = $4, count_ebay = $5, price_ebay = $6, price_store = $7, count_store = $8, link = $9, image = $10, datetime = $11 WHERE id = $12",
+        const updateDevice = await pool.query("UPDATE  ebaytab SET model = $1 , country = $2, device = $3, oem = $4, count = $5, price = $6,  link = $7, image = $8, datetime = $9 WHERE id = $10",
             [
                 model,
                 country,
                 device,
                 oem,
-                count_ebay,
-                price_ebay,
-                price_store,
-                count_store,
+                count,
+                price,
+                // price_store,
+                // count_store,
                 link,
                 image,
                 datetime,
@@ -366,6 +464,7 @@ app.delete("/device/bamper/:id", async (req, res) => {
         console.error(error.message)
     }
 })
+
 
 //avita table
 // create avita device
