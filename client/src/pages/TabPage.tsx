@@ -95,7 +95,7 @@ const TabPage = () => {
 
     // const [searchValue, setSearchValue]= useState('')
     const filterDevice = todos.filter((dev) => {
-        return dev.oem.toLowerCase().includes(searchValue.toLowerCase().trim())
+        return dev.oem.toLowerCase().includes(searchValue.toLowerCase())
     })
 
     return (
