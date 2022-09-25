@@ -3,7 +3,7 @@ import {Route, Routes} from 'react-router-dom'
 import Error404 from '../pages/errorPage/Error404';
 import Hero from '../pages/hero/Hero';
 import LoginPage from "../pages/login/LoginPage";
-import SignInPage from "../pages/signIn/SignInPage";
+import SignUpPage from "../pages/signup/SignUpPage";
 import AllSiteTabPage from "../pages/allSite/AllSiteTabPage";
 import Analog from "../pages/analog/Analog";
 import AvitaPage from "../pages/avita/AvitaPage";
@@ -22,11 +22,12 @@ export const PATH = {
     BAMPER : '/bamper',
     CONTACT: '/contact',
     EBAY: '/ebay',
-    HERO: '/hero',
+    // HERO: '/hero',
     LOGIN: '/login',
     MANUAL : '/manual',
-    SIGNIN: '/signin',
-    STORE: '/store'
+    SIGNUP: '/signup',
+    STORE: '/store',
+    // HOME: '/home'
 
     // REGISTRATION: '/register',
     // NEW_PASSWORD: '/set-new-password',
@@ -43,7 +44,7 @@ export const RoutesRoot = () => {
         <div>
             <Routes>
                 <Route path={'/'} element={<Hero/>}/>
-                <Route path={PATH.HERO} element={<Hero/>}/>
+                {/*<Route path={PATH.HERO} element={<Hero/>}/>*/}
                 <Route path={PATH.ALLSITE} element={<AllSiteTabPage/>}/>
                 <Route path={PATH.ANALOG} element={<Analog/>}/>
                 <Route path={PATH.AVITA} element={<AvitaPage/>}/>
@@ -54,7 +55,7 @@ export const RoutesRoot = () => {
 
                 <Route path={PATH.LOGIN} element={<LoginPage/>}/>
                 <Route path={PATH.MANUAL} element={<Manual/>}/>
-                <Route path={PATH.SIGNIN} element={<SignInPage/>}/>
+                <Route path={PATH.SIGNUP} element={<SignUpPage/>}/>
                 <Route path={PATH.STORE} element={<StorePage/>}/>
                 <Route path={'*'} element={<Error404/>}/>
                 {/*<Route path={PATH.REGISTRATION} element={<Registration/>}/>*/}

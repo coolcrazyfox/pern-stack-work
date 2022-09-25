@@ -1,20 +1,20 @@
 import React, { Fragment } from 'react';
+// @ts-ignore
+import styles from './Hero.module.css';
+import { AiOutlineSearch } from 'react-icons/ai';
 import NavBar from "../../components/navbar/NavBar";
-import Main from "../../components/Main";
+import Main from "../mainPage/Main";
 
-import EbayListPage from "../ebay/EbayListPage";
-import InputEbay from "../ebay/InputEbay";
 
 const Hero = () => {
     return (
+
         <Fragment>
             <NavBar/>
             <div className="main_container">
-                HERO
+                <Main/>
 
             </div>
-
-            {/*<Main/>*/}
         </Fragment>
     );
 };

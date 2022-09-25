@@ -60,7 +60,7 @@ const NavBar = () => {
                     <Link to='/contact'>Contact</Link>
                 </li>
                 <li>
-                    <Link to='/signin'>Sign In</Link>
+                    <Link to='/signup'>Sign In</Link>
                 </li>
                 <li>
                     <Link to='/login'>Log In</Link>

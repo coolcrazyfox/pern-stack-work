@@ -5,7 +5,7 @@ section {
     /*overflow: hidden;*/
     /*box-sizing: border-box;*/
     font-family: 'Poppins', sans-serif;
-    min-height: 100vh;
+    height: 113vh;
     background: linear-gradient(to bottom, #4a4b4f, #dff1ff);
 }
 

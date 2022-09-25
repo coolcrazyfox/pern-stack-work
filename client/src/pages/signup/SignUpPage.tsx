@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react';
 import NavBar from "../../components/navbar/NavBar";
 
-const SignInPage = () => {
+const SignUpPage = () => {
     return (
         <Fragment>
             <NavBar/>
@@ -15,4 +15,4 @@ const SignInPage = () => {
     );
 };
 
-export default SignInPage;
+export default SignUpPage;
