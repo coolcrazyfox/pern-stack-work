@@ -16,9 +16,9 @@ import Search from "../../components/search/Search";
 import SearchInput from "../../components/search/SearchInput";
 import PaginationReact from "../../components/pagination/PaginationReact";
 import {useScroll} from "../../hook/useScroll";
+import InputEbay from "./InputEbay";
 
-
-export interface BamperTable {
+export interface EbayTable {
     id: string
     model: string
     country: string
@@ -32,13 +32,13 @@ export interface BamperTable {
 
 }
 
-interface BamperContainer extends Array<BamperTable> {
+interface EbayContainer extends Array<EbayTable> {
 }
 
-export const baseUrl = "http://localhost:7000/device/bamper"
+export const baseUrl = "http://localhost:7000/device/ebay"
 
-const BamperListPage = () => {
-    const [todos, setTodos] = useState<BamperContainer>([]);
+const EbayListPage = () => {
+    const [todos, setTodos] = useState<EbayContainer>([]);
     const [searchValue, setSearchValue] = useState('')
     const [loading, setLoading] = useState(false)
     const [currentPage, setCurrentPage] = useState(1)
@@ -101,10 +101,15 @@ const BamperListPage = () => {
         <Fragment>
             {/*{loading && <Loader/>}*/}
             {/*{error && <ErrorMessage error={error}/>}*/}
-            <div> Bamper Table Form</div>
+            <div> Ebay Table Form</div>
 
             <div className={s.tab_container}>
                 <div className={s.header_title_tab}>
+                    {/* <PaginationReact onChangedPage={paginate}
+                                     totalCount={todos.length}
+                                     pageSize={devicePerPage}
+                                     currentPage={currentPage}
+                    /> */}
 
                     <Pagination totalCount={todos.length}
 
@@ -113,6 +118,13 @@ const BamperListPage = () => {
                                 onChangedPage={paginate}/>
 
                     <SearchInput searchValue={searchValue} setSearchValue={setSearchValue}/>
+
+                    {/*<SearchForm todo={todos}/>*/}
+                    {/*<Search todos={todos}/>*/}
+                    {/* <span className={s.span_icon}><FcSearch className={s.span_icon}/></span> */}
+                    {/*<form  className={s.searchbox} action="#">*/}
+                    {/*    <input type="text" placeholder='Search' onChange={(e)=>{setSearchValue(e.currentTarget.value)}} />*/}
+                    {/*</form>*/}
 
 
                 </div>
@@ -124,8 +136,8 @@ const BamperListPage = () => {
                         <th>Country</th>
                         <th>Device</th>
                         <th>OEM</th>
-                        <th>Count_bamper</th>
-                        <th>Price_bamper $</th>
+                        <th>Count_ebay</th>
+                        <th>Price_ebay $</th>
                         <th>Date</th>
                         <th>Link</th>
                         <th>Image</th>
@@ -159,6 +171,11 @@ const BamperListPage = () => {
                         </thead>
                         <tbody>
 
+                        {/*<Pagination*/}
+                        {/*    devicePerPage={devicePerPage}*/}
+                        {/*    totalDevice={todos.length}*/}
+                        {/*    paginate={paginate}*/}
+                        {/*/>*/}
 
                         {
                             filterDevice
@@ -199,6 +216,23 @@ const BamperListPage = () => {
                                                     </button>
                                                 </td>
                                             </tr>)
+
+                                        // return <Table key={todo.id}
+                                        //                   model={todo.model}
+                                        //                   country={todo.country}
+                                        //                   device={todo.device}
+                                        //                   oem={todo.oem}
+                                        //                   count_ebay={todo.count_ebay}
+                                        //                   price_ebay={todo.price_ebay}
+                                        //                   price_store={todo.price_store}
+                                        //               count_store={todo.count_store}
+                                        //               datetime={todo.datetime}
+                                        //               link_adr={todo.link_adr}
+                                        //               image={todo.image}
+                                        //               deleteDevice={deleteTodo}
+                                        //               todo={todo}
+                                        //
+                                        //     />
                                     }
                                 )
                         }
@@ -214,4 +248,4 @@ const BamperListPage = () => {
     );
 };
 
-export default BamperListPage;
+export default EbayListPage;

@@ -1,24 +1,14 @@
 import React, {Fragment, useEffect, useRef, useState} from 'react';
-
-// import ErrorMessage from '../ui/components/ErrorMessage';
-// import Loader from '../ui/components/Loader';
-
 // @ts-ignore
 import s from "../../style/Table.module.css";
-
 import {Pagination} from "../../common/c12-Pagination/Pagination";
 import EditDevice from "../../components/EditDevice";
 import {BsFillFolderSymlinkFill, BsImage} from "react-icons/bs";
-import {FcSearch} from "react-icons/fc"
-
-import SearchForm from "../../components/SearchForm";
-import Search from "../../components/search/Search";
 import SearchInput from "../../components/search/SearchInput";
-import PaginationReact from "../../components/pagination/PaginationReact";
 import {useScroll} from "../../hook/useScroll";
 
 
-export interface BamperTable {
+export interface AllSiteTable {
     id: string
     model: string
     country: string
@@ -32,13 +22,13 @@ export interface BamperTable {
 
 }
 
-interface BamperContainer extends Array<BamperTable> {
+interface AllSiteContainer extends Array<AllSiteTable> {
 }
 
-export const baseUrl = "http://localhost:7000/device/bamper"
+export const baseUrl = "http://localhost:7000/device/all"
 
-const BamperListPage = () => {
-    const [todos, setTodos] = useState<BamperContainer>([]);
+const AllSiteListPage = () => {
+    const [todos, setTodos] = useState<AllSiteContainer>([]);
     const [searchValue, setSearchValue] = useState('')
     const [loading, setLoading] = useState(false)
     const [currentPage, setCurrentPage] = useState(1)
@@ -66,7 +56,7 @@ const BamperListPage = () => {
     const deleteTodo = async (id: string) => {
         try {
             const deleteTodo = await fetch(
-                `http://localhost:7000/device/ebay/${id}`,
+                `http://localhost:7000/device/all/${id}`,
                 {
                     method: "DELETE",
                 }
@@ -101,7 +91,7 @@ const BamperListPage = () => {
         <Fragment>
             {/*{loading && <Loader/>}*/}
             {/*{error && <ErrorMessage error={error}/>}*/}
-            <div> Bamper Table Form</div>
+            <div> All Site Table Form</div>
 
             <div className={s.tab_container}>
                 <div className={s.header_title_tab}>
@@ -124,8 +114,8 @@ const BamperListPage = () => {
                         <th>Country</th>
                         <th>Device</th>
                         <th>OEM</th>
-                        <th>Count_bamper</th>
-                        <th>Price_bamper $</th>
+                        <th>Count_ebay</th>
+                        <th>Price_ebay $</th>
                         <th>Date</th>
                         <th>Link</th>
                         <th>Image</th>
@@ -158,7 +148,6 @@ const BamperListPage = () => {
                         </tr>
                         </thead>
                         <tbody>
-
 
                         {
                             filterDevice
@@ -199,6 +188,7 @@ const BamperListPage = () => {
                                                     </button>
                                                 </td>
                                             </tr>)
+
                                     }
                                 )
                         }
@@ -214,4 +204,4 @@ const BamperListPage = () => {
     );
 };
 
-export default BamperListPage;
+export default AllSiteListPage;
