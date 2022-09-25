@@ -1,24 +1,14 @@
 import React, {Fragment, useEffect, useRef, useState} from 'react';
-
-// import ErrorMessage from '../ui/components/ErrorMessage';
-// import Loader from '../ui/components/Loader';
-
 // @ts-ignore
 import s from "../../style/Table.module.css";
-
 import {Pagination} from "../../common/c12-Pagination/Pagination";
 import EditDevice from "../../components/EditDevice";
 import {BsFillFolderSymlinkFill, BsImage} from "react-icons/bs";
-import {FcSearch} from "react-icons/fc"
-
-import SearchForm from "../../components/SearchForm";
-import Search from "../../components/search/Search";
 import SearchInput from "../../components/search/SearchInput";
-import PaginationReact from "../../components/pagination/PaginationReact";
 import {useScroll} from "../../hook/useScroll";
-import InputEbay from "./InputEbay";
 
-export interface EbayTable {
+
+export interface AvitaTable {
     id: string
     model: string
     country: string
@@ -32,13 +22,13 @@ export interface EbayTable {
 
 }
 
-interface EbayContainer extends Array<EbayTable> {
+interface AvitaContainer extends Array<AvitaTable> {
 }
 
-export const baseUrl = "http://localhost:7000/device/ebay"
+export const baseUrl = "http://localhost:7000/device/avita"
 
-const EbayListPage = () => {
-    const [todos, setTodos] = useState<EbayContainer>([]);
+const AvitaListPage = () => {
+    const [todos, setTodos] = useState<AvitaContainer>([]);
     const [searchValue, setSearchValue] = useState('')
     const [loading, setLoading] = useState(false)
     const [currentPage, setCurrentPage] = useState(1)
@@ -66,7 +56,7 @@ const EbayListPage = () => {
     const deleteTodo = async (id: string) => {
         try {
             const deleteTodo = await fetch(
-                `http://localhost:7000/device/ebay/${id}`,
+                `http://localhost:7000/device/avita/${id}`,
                 {
                     method: "DELETE",
                 }
@@ -101,15 +91,10 @@ const EbayListPage = () => {
         <Fragment>
             {/*{loading && <Loader/>}*/}
             {/*{error && <ErrorMessage error={error}/>}*/}
-            <div> Ebay Table Form</div>
+            <div> Avita Table Form</div>
 
             <div className={s.tab_container}>
                 <div className={s.header_title_tab}>
-                    {/* <PaginationReact onChangedPage={paginate}
-                                     totalCount={todos.length}
-                                     pageSize={devicePerPage}
-                                     currentPage={currentPage}
-                    /> */}
 
                     <Pagination totalCount={todos.length}
 
@@ -118,13 +103,6 @@ const EbayListPage = () => {
                                 onChangedPage={paginate}/>
 
                     <SearchInput searchValue={searchValue} setSearchValue={setSearchValue}/>
-
-                    {/*<SearchForm todo={todos}/>*/}
-                    {/*<Search todos={todos}/>*/}
-                    {/* <span className={s.span_icon}><FcSearch className={s.span_icon}/></span> */}
-                    {/*<form  className={s.searchbox} action="#">*/}
-                    {/*    <input type="text" placeholder='Search' onChange={(e)=>{setSearchValue(e.currentTarget.value)}} />*/}
-                    {/*</form>*/}
 
 
                 </div>
@@ -136,8 +114,8 @@ const EbayListPage = () => {
                         <th>Country</th>
                         <th>Device</th>
                         <th>OEM</th>
-                        <th>Count_ebay</th>
-                        <th>Price_ebay $</th>
+                        <th>Count_avita</th>
+                        <th>Price_avita $</th>
                         <th>Date</th>
                         <th>Link</th>
                         <th>Image</th>
@@ -160,8 +138,8 @@ const EbayListPage = () => {
                             <th>Country</th>
                             <th>Device</th>
                             <th>OEM</th>
-                            <th>Count_ebay</th>
-                            <th>Price_ebay $</th>
+                            <th>Count_avita</th>
+                            <th>Price_avita $</th>
                             <th>Date</th>
                             <th>Link</th>
                             <th>Image</th>
@@ -170,12 +148,6 @@ const EbayListPage = () => {
                         </tr>
                         </thead>
                         <tbody>
-
-                        {/*<Pagination*/}
-                        {/*    devicePerPage={devicePerPage}*/}
-                        {/*    totalDevice={todos.length}*/}
-                        {/*    paginate={paginate}*/}
-                        {/*/>*/}
 
                         {
                             filterDevice
@@ -217,22 +189,6 @@ const EbayListPage = () => {
                                                 </td>
                                             </tr>)
 
-                                        // return <Table key={todo.id}
-                                        //                   model={todo.model}
-                                        //                   country={todo.country}
-                                        //                   device={todo.device}
-                                        //                   oem={todo.oem}
-                                        //                   count_ebay={todo.count_ebay}
-                                        //                   price_ebay={todo.price_ebay}
-                                        //                   price_store={todo.price_store}
-                                        //               count_store={todo.count_store}
-                                        //               datetime={todo.datetime}
-                                        //               link_adr={todo.link_adr}
-                                        //               image={todo.image}
-                                        //               deleteDevice={deleteTodo}
-                                        //               todo={todo}
-                                        //
-                                        //     />
                                     }
                                 )
                         }
@@ -242,10 +198,9 @@ const EbayListPage = () => {
                     </div>
                 </table>
 
-
             </div>
         </Fragment>
     );
 };
 
-export default EbayListPage;
+export default AvitaListPage;

@@ -2,7 +2,7 @@ import React, { Fragment, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
-const InputEbay = () => {
+const InputAllSite = () => {
   const [model, setModel] = useState("");
   const [country, setCountry] = useState("");
   const [device, setDevice] = useState("");
@@ -23,7 +23,7 @@ const InputEbay = () => {
     e.preventDefault();
     try {
       const body = { model, country, device, oem, count, price,  link, image, datetime};
-      const response = await fetch("http://localhost:7000/device/ebay", {
+      const response = await fetch("http://localhost:7000/device/all", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body)
@@ -156,4 +156,4 @@ const InputEbay = () => {
   );
 };
 
-export default InputEbay;
+export default InputAllSite;

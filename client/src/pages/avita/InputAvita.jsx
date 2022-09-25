@@ -2,7 +2,7 @@ import React, { Fragment, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
-const InputEbay = () => {
+const InputAllSite = () => {
   const [model, setModel] = useState("");
   const [country, setCountry] = useState("");
   const [device, setDevice] = useState("");
@@ -23,7 +23,7 @@ const InputEbay = () => {
     e.preventDefault();
     try {
       const body = { model, country, device, oem, count, price,  link, image, datetime};
-      const response = await fetch("http://localhost:7000/device/ebay", {
+      const response = await fetch("http://localhost:7000/device/avita", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body)
@@ -46,8 +46,8 @@ const InputEbay = () => {
                 <th scope="col">Country</th>
                 <th scope="col">Device</th>
                 <th scope="col">OEM</th>
-                <th scope="col">Count_ebay</th>
-                <th scope="col">Price_ebay $</th>
+                <th scope="col">Count_avita</th>
+                <th scope="col">Price_avita $</th>
                 <th scope="col">Date</th>
                 <th scope="col">Link</th>
                 <th scope="col">Image</th>
@@ -95,7 +95,7 @@ const InputEbay = () => {
                   </td>
                   <td>
                     <input
-                      placeholder="Send count_ebay"
+                      placeholder="Send count_avita"
                       type="text"
                       className="form-control"
                       value={count}
@@ -104,7 +104,7 @@ const InputEbay = () => {
                   </td>
                   <td>
                     <input
-                      placeholder="Send price_ebay"
+                      placeholder="Send price_avita"
                       type="text"
                       className="form-control"
                       value={price}
@@ -156,4 +156,4 @@ const InputEbay = () => {
   );
 };
 
-export default InputEbay;
+export default InputAllSite;

@@ -1,14 +1,15 @@
 import React, {Fragment} from 'react';
 import NavBar from "../../components/navbar/NavBar";
+import InputAvita from "./InputAvita";
+import AvitaListPage from "./AvitaListPage";
 
 const AvitaPage = () => {
     return (
         <Fragment>
             <NavBar/>
             <div className="main_container">
-                <div>
-                    Avita Page
-                </div>
+                <InputAvita/>
+                <AvitaListPage/>
 
             </div>
         </Fragment>

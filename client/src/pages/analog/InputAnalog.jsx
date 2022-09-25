@@ -2,15 +2,10 @@ import React, { Fragment, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
-const InputEbay = () => {
+const InputAnalog = () => {
   const [model, setModel] = useState("");
-  const [country, setCountry] = useState("");
   const [device, setDevice] = useState("");
-  const [oem, setOem] = useState("");
-  const [count, setCount] = useState("");
-  const [price, setPrice] = useState("");
-  // const [price_store, setPriceStore] = useState("");
-  // const [count_store, setCountStore] = useState("");
+  const [analog_oem, setAnalogOem] = useState("");
   const [link, setLink] = useState("");
   const [image, setImage] = useState("");
   const [datetime, setDateTime] = useState("");
@@ -22,8 +17,8 @@ const InputEbay = () => {
   const onSubmitForm = async e => {
     e.preventDefault();
     try {
-      const body = { model, country, device, oem, count, price,  link, image, datetime};
-      const response = await fetch("http://localhost:7000/device/ebay", {
+      const body = { model, device, analog_oem,  link, image, datetime};
+      const response = await fetch("http://localhost:7000/device/analog", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body)
@@ -43,11 +38,8 @@ const InputEbay = () => {
               <tr>
 
                 <th scope="col">Model</th>
-                <th scope="col">Country</th>
                 <th scope="col">Device</th>
-                <th scope="col">OEM</th>
-                <th scope="col">Count_ebay</th>
-                <th scope="col">Price_ebay $</th>
+                <th scope="col">Analog OEM</th>
                 <th scope="col">Date</th>
                 <th scope="col">Link</th>
                 <th scope="col">Image</th>
@@ -68,15 +60,6 @@ const InputEbay = () => {
                   </td>
                   <td>
                     <input
-                    placeholder="Send country"
-                    type="text"
-                    className="form-control"
-                    value={country}
-                    onChange={e => setCountry(e.target.value)}
-                    />
-                  </td>
-                  <td>
-                    <input
                       placeholder="Send device"
                       type="text"
                       className="form-control"
@@ -89,26 +72,8 @@ const InputEbay = () => {
                       placeholder="Send OEM"
                       type="text"
                       className="form-control"
-                      value={oem}
-                      onChange={e => setOem(e.target.value)}
-                  />
-                  </td>
-                  <td>
-                    <input
-                      placeholder="Send count_ebay"
-                      type="text"
-                      className="form-control"
-                      value={count}
-                      onChange={e => setCount(e.target.value)}
-                  />
-                  </td>
-                  <td>
-                    <input
-                      placeholder="Send price_ebay"
-                      type="text"
-                      className="form-control"
-                      value={price}
-                      onChange={e => setPrice(e.target.value)}
+                      value={analog_oem}
+                      onChange={e => setAnalogOem(e.target.value)}
                   />
                   </td>
 
@@ -156,4 +121,4 @@ const InputEbay = () => {
   );
 };
 
-export default InputEbay;
+export default InputAnalog;

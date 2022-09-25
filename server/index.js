@@ -142,6 +142,100 @@ app.delete("/device/all/:id", async (req, res) => {
 })
 
 
+//manual table
+// create analog device
+app.post("/device/manual", async (req, res) => {
+    try {
+        const {
+            device,
+            oem,
+            analog_oem,
+            link,
+            image,
+            datetime
+        } = req.body
+        const newTodo = await pool.query("INSERT INTO manualtab (device, oem, analog_oem, link, image, datetime) VALUES ($1, $2, $3, $4, $5, $6 ) RETURNING *",
+            [
+                device,
+                oem,
+                analog_oem,
+                link,
+                image,
+                datetime
+            ])
+        res.json(newTodo.rows[0])
+    } catch (error) {
+        console.error(error.message)
+    }
+})
+
+// get all manual device
+app.get("/device/manual", async (req, res) => {
+    try {
+        const allTodos = await pool.query("SELECT * FROM manualtab")
+        res.json(allTodos.rows)
+    } catch (error) {
+        console.error(error.message)
+    }
+})
+
+// get a manual device
+app.get("/device/manual/:id", async (req, res) => {
+    try {
+        const {
+            id
+        } = req.params;
+        const deviceItem = await pool.query("SELECT * FROM manualtab WHERE id = $1", [id])
+        res.json(deviceItem.rows[0])
+    } catch (error) {
+        console.error(error.message)
+    }
+})
+
+// update a manual device
+app.put("/device/manual/:id", async (req, res) => {
+    try {
+        const {
+            id
+        } = req.params;
+        const {
+            device,
+            oem,
+            analog_oem,
+            link,
+            image,
+            datetime
+        } = req.body;
+        const updateDevice = await pool.query("UPDATE  manualtab SET model = $1 ,  device = $2, oem = $3, analog_oem = $4,  link = $5, image = $6, datetime = $7 WHERE id = $8",
+            [
+                device,
+                oem,
+                analog_oem,
+                link,
+                image,
+                datetime,
+                id
+            ])
+        res.json("device was updated in manualTab")
+    } catch (error) {
+        console.error(error.message)
+    }
+})
+
+// delete a manual device
+app.delete("/device/manual/:id", async (req, res) => {
+    try {
+        const {
+            id
+        } = req.params;
+        const deleteTodo = await pool.query("DELETE FROM manualtab WHERE id = $1", [id])
+        res.json("device was deleted in manualTab!")
+    } catch (error) {
+        console.error(error.message)
+    }
+})
+
+
 //analog table
 // create analog device
 app.post("/device/analog", async (req, res) => {

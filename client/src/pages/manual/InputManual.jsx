@@ -2,15 +2,10 @@ import React, { Fragment, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
-const InputEbay = () => {
+const InputAllSite = () => {
   const [model, setModel] = useState("");
-  const [country, setCountry] = useState("");
   const [device, setDevice] = useState("");
   const [oem, setOem] = useState("");
-  const [count, setCount] = useState("");
-  const [price, setPrice] = useState("");
-  // const [price_store, setPriceStore] = useState("");
-  // const [count_store, setCountStore] = useState("");
   const [link, setLink] = useState("");
   const [image, setImage] = useState("");
   const [datetime, setDateTime] = useState("");
@@ -22,8 +17,8 @@ const InputEbay = () => {
   const onSubmitForm = async e => {
     e.preventDefault();
     try {
-      const body = { model, country, device, oem, count, price,  link, image, datetime};
-      const response = await fetch("http://localhost:7000/device/ebay", {
+      const body = { model,  device, oem,   link, image, datetime};
+      const response = await fetch("http://localhost:7000/device/all", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body)
@@ -156,4 +151,4 @@ const InputEbay = () => {
   );
 };
 
-export default InputEbay;
+export default InputAllSite;
