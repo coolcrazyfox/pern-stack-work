@@ -42,13 +42,16 @@ const NavBar = () => {
                     <Link to='/analog'>Analog</Link>
                 </li>
                 <li>
-                    <Link to='/all'>All</Link>
+                    <Link to='/allsite'>All</Link>
                 </li>
                 <li>
                     <Link to='/store'>Store</Link>
                 </li>
                 <li>
                     <Link to='/bamper'>Bamper</Link>
+                </li>
+                <li>
+                    <Link to='/ebay'>Ebay</Link>
                 </li>
                 <li>
                     <Link to='/avita'>Avita</Link>

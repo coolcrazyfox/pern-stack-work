@@ -4,20 +4,21 @@ import React, {Fragment, useEffect, useRef, useState} from 'react';
 // import Loader from '../ui/components/Loader';
 
 // @ts-ignore
-import s from "../style/Table.module.css";
+import s from "../../style/Table.module.css";
 
-import {Pagination} from "../common/c12-Pagination/Pagination";
-import EditDevice from "../components/EditDevice";
+import {Pagination} from "../../common/c12-Pagination/Pagination";
+import EditDevice from "../../components/EditDevice";
 import {BsFillFolderSymlinkFill, BsImage} from "react-icons/bs";
 import {FcSearch} from "react-icons/fc"
-import InputDevice from "../components/InputDevice";
-import SearchForm from "../components/SearchForm";
-import Search from "../components/search/Search";
-import SearchInput from "../components/search/SearchInput";
-import PaginationReact from "../components/pagination/PaginationReact";
-import {useScroll} from "../hook/useScroll";
 
-export interface EbayTable {
+import SearchForm from "../../components/SearchForm";
+import Search from "../../components/search/Search";
+import SearchInput from "../../components/search/SearchInput";
+import PaginationReact from "../../components/pagination/PaginationReact";
+import {useScroll} from "../../hook/useScroll";
+
+
+export interface BamperTable {
     id: string
     model: string
     country: string
@@ -31,17 +32,17 @@ export interface EbayTable {
 
 }
 
-interface EbayContainer extends Array<EbayTable> {
+interface BamperContainer extends Array<BamperTable> {
 }
 
-export const baseUrl = "http://localhost:7000/device/ebay"
+export const baseUrl = "http://localhost:7000/device/bamper"
 
-const TabPage = () => {
-    const [todos, setTodos] = useState<EbayContainer>([]);
+const BamperListPage = () => {
+    const [todos, setTodos] = useState<BamperContainer>([]);
     const [searchValue, setSearchValue] = useState('')
     const [loading, setLoading] = useState(false)
     const [currentPage, setCurrentPage] = useState(1)
-    const [devicePerPage] = useState(6)
+    const [devicePerPage] = useState(10)
 
     // scroll
     const hasScroll = todos.length > 3
@@ -100,16 +101,10 @@ const TabPage = () => {
         <Fragment>
             {/*{loading && <Loader/>}*/}
             {/*{error && <ErrorMessage error={error}/>}*/}
-            <div> Ebay Table Form</div>
+            <div> Bamper Table Form</div>
 
             <div className={s.tab_container}>
                 <div className={s.header_title_tab}>
-                    {/* <InputDevice/> */}
-                    {/* <PaginationReact onChangedPage={paginate}
-                                     totalCount={todos.length}
-                                     pageSize={devicePerPage}
-                                     currentPage={currentPage}
-                    /> */}
 
                     <Pagination totalCount={todos.length}
 
@@ -118,13 +113,6 @@ const TabPage = () => {
                                 onChangedPage={paginate}/>
 
                     <SearchInput searchValue={searchValue} setSearchValue={setSearchValue}/>
-
-                    {/*<SearchForm todo={todos}/>*/}
-                    {/*<Search todos={todos}/>*/}
-                    {/* <span className={s.span_icon}><FcSearch className={s.span_icon}/></span> */}
-                    {/*<form  className={s.searchbox} action="#">*/}
-                    {/*    <input type="text" placeholder='Search' onChange={(e)=>{setSearchValue(e.currentTarget.value)}} />*/}
-                    {/*</form>*/}
 
 
                 </div>
@@ -152,7 +140,7 @@ const TabPage = () => {
 
                 <table className={s.table}>
 
-                    <div style={{height: hasScroll ? '430px' : 'auto', minHeight: '120px'}} ref={todoWrapper}>
+                    <div style={{height: hasScroll ? '285px' : 'auto', minHeight: '120px'}} ref={todoWrapper}>
 
                         <thead>
                         <tr>
@@ -171,11 +159,6 @@ const TabPage = () => {
                         </thead>
                         <tbody>
 
-                        {/*<Pagination*/}
-                        {/*    devicePerPage={devicePerPage}*/}
-                        {/*    totalDevice={todos.length}*/}
-                        {/*    paginate={paginate}*/}
-                        {/*/>*/}
 
                         {
                             filterDevice
@@ -216,23 +199,6 @@ const TabPage = () => {
                                                     </button>
                                                 </td>
                                             </tr>)
-
-                                        // return <Table key={todo.id}
-                                        //                   model={todo.model}
-                                        //                   country={todo.country}
-                                        //                   device={todo.device}
-                                        //                   oem={todo.oem}
-                                        //                   count_ebay={todo.count_ebay}
-                                        //                   price_ebay={todo.price_ebay}
-                                        //                   price_store={todo.price_store}
-                                        //               count_store={todo.count_store}
-                                        //               datetime={todo.datetime}
-                                        //               link_adr={todo.link_adr}
-                                        //               image={todo.image}
-                                        //               deleteDevice={deleteTodo}
-                                        //               todo={todo}
-                                        //
-                                        //     />
                                     }
                                 )
                         }
@@ -248,4 +214,4 @@ const TabPage = () => {
     );
 };
 
-export default TabPage;
+export default BamperListPage;

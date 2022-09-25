@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {ToDo} from "../../pages/TabPage";
+import {ToDo} from "../../pages/ebay/EbayListPage";
 import EditTodo from "../EditTodo";
 // import s from '../../style/Table.module.css';
 

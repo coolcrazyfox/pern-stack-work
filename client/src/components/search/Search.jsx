@@ -6,7 +6,7 @@ import s from '../../style/Search.module.css';
 // import MOCK_DATA from './../../MOCK_DATA.json';
 import OEM_DATA from './../../OEM_DATA.json';
 import Carlist from "../components/Carlist";
-import TabPage from "../../pages/TabPage";
+import EbayListPage from "../../pages/ebay/EbayListPage";
 import SuperButton from "../../common/SuperButton/SupperButton";
 import Modal from "../modal/Modal";
 
@@ -77,7 +77,7 @@ const Search = () => {
                 {/*{children}*/}
             </Modal>
 
-                {/*<TabPage oemList={carList}/>*/}
+                {/*<EbayListPage oemList={carList}/>*/}
                 {/*<Carlist carList={carList}/>*/}
                 {/*<ul className={s.tab_search}>*/}
                 {/*    {carList.map((car, index)=>{*/}

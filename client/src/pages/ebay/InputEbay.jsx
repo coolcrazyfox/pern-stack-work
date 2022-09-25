@@ -2,7 +2,7 @@ import React, { Fragment, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
-const InputDev = () => {
+const InputEbay = () => {
   const [model, setModel] = useState("");
   const [country, setCountry] = useState("");
   const [device, setDevice] = useState("");
@@ -114,7 +114,7 @@ const InputDev = () => {
 
                   <td>
                     <input
-                      placeholder="Send date"
+                      placeholder="yy-mm-dd"
                       type="text"
                       className="form-control"
                       value={datetime}
@@ -156,4 +156,4 @@ const InputDev = () => {
   );
 };
 
-export default InputDev;
+export default InputEbay;

@@ -1,19 +1,19 @@
 import React, { Fragment } from 'react';
-import NavBar from "../components/navbar/NavBar";
-import Main from "../components/Main";
+import NavBar from "../../components/navbar/NavBar";
+import Main from "../../components/Main";
 
-import TabPage from "./TabPage";
-import InputDev from "../components/InputDev";
+import EbayListPage from "../ebay/EbayListPage";
+import InputEbay from "../ebay/InputEbay";
 
 const Hero = () => {
     return (
         <Fragment>
             <NavBar/>
             <div className="main_container">
+                HERO
 
-               <InputDev/>
-                <TabPage/>
             </div>
+
             {/*<Main/>*/}
         </Fragment>
     );

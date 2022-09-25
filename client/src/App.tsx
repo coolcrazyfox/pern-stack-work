@@ -20,9 +20,9 @@ function App() {
         <RoutesRoot/>
       {/*<div className="main_container">*/}
       {/*       /!* <InputDevice/> *!/*/}
-      {/*       <InputDev/>*/}
+      {/*       <InputEbay/>*/}
 
-      {/*       <TabPage/>*/}
+      {/*       <EbayListPage/>*/}
 
 
       {/*    /!*<ListDevice />*!/*/}
