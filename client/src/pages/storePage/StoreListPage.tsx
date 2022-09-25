@@ -8,7 +8,7 @@ import SearchInput from "../../components/search/SearchInput";
 import {useScroll} from "../../hook/useScroll";
 
 
-export interface AllSiteTable {
+export interface StoreTable {
     id: string
     model: string
     country: string
@@ -22,13 +22,13 @@ export interface AllSiteTable {
 
 }
 
-interface AllSiteContainer extends Array<AllSiteTable> {
+interface StoreContainer extends Array<StoreTable> {
 }
 
-export const baseUrl = "http://localhost:7000/device/all"
+export const baseUrl = "http://localhost:7000/device/store"
 
-const AllSiteListPage = () => {
-    const [todos, setTodos] = useState<AllSiteContainer>([]);
+const StoreListPage = () => {
+    const [todos, setTodos] = useState<StoreContainer>([]);
     const [searchValue, setSearchValue] = useState('')
     const [loading, setLoading] = useState(false)
     const [currentPage, setCurrentPage] = useState(1)
@@ -56,7 +56,7 @@ const AllSiteListPage = () => {
     const deleteTodo = async (id: string) => {
         try {
             const deleteTodo = await fetch(
-                `http://localhost:7000/device/all/${id}`,
+                `http://localhost:7000/device/store/${id}`,
                 {
                     method: "DELETE",
                 }
@@ -91,7 +91,7 @@ const AllSiteListPage = () => {
         <Fragment>
             {/*{loading && <Loader/>}*/}
             {/*{error && <ErrorMessage error={error}/>}*/}
-            <div> All Site Table Form</div>
+            <div> Store Table Form</div>
 
             <div className={s.tab_container}>
                 <div className={s.header_title_tab}>
@@ -114,8 +114,8 @@ const AllSiteListPage = () => {
                         <th>Country</th>
                         <th>Device</th>
                         <th>OEM</th>
-                        <th>Count_ebay</th>
-                        <th>Price_ebay $</th>
+                        <th>Count_store</th>
+                        <th>Price_store $</th>
                         <th>Date</th>
                         <th>Link</th>
                         <th>Image</th>
@@ -138,8 +138,8 @@ const AllSiteListPage = () => {
                             <th>Country</th>
                             <th>Device</th>
                             <th>OEM</th>
-                            <th>Count_ebay</th>
-                            <th>Price_ebay $</th>
+                            <th>Count_store</th>
+                            <th>Price_store $</th>
                             <th>Date</th>
                             <th>Link</th>
                             <th>Image</th>
@@ -204,4 +204,4 @@ const AllSiteListPage = () => {
     );
 };
 
-export default AllSiteListPage;
+export default StoreListPage;

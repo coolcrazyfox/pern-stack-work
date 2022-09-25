@@ -1,8 +1,9 @@
 import React, { Fragment, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import {StoreTable} from "./StoreListPage";
 
-const InputAllSite = () => {
+const InputStore = () => {
   const [model, setModel] = useState("");
   const [country, setCountry] = useState("");
   const [device, setDevice] = useState("");
@@ -23,7 +24,7 @@ const InputAllSite = () => {
     e.preventDefault();
     try {
       const body = { model, country, device, oem, count, price,  link, image, datetime};
-      const response = await fetch("http://localhost:7000/device/all", {
+      const response = await fetch("http://localhost:7000/device/store", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body)
@@ -46,8 +47,8 @@ const InputAllSite = () => {
                 <th scope="col">Country</th>
                 <th scope="col">Device</th>
                 <th scope="col">OEM</th>
-                <th scope="col">Count_ebay</th>
-                <th scope="col">Price_ebay $</th>
+                <th scope="col">Count_store</th>
+                <th scope="col">Price_store $</th>
                 <th scope="col">Date</th>
                 <th scope="col">Link</th>
                 <th scope="col">Image</th>
@@ -95,7 +96,7 @@ const InputAllSite = () => {
                   </td>
                   <td>
                     <input
-                      placeholder="Send count_ebay"
+                      placeholder="Send count_store"
                       type="text"
                       className="form-control"
                       value={count}
@@ -104,7 +105,7 @@ const InputAllSite = () => {
                   </td>
                   <td>
                     <input
-                      placeholder="Send price_ebay"
+                      placeholder="Send price_store"
                       type="text"
                       className="form-control"
                       value={price}
@@ -156,4 +157,4 @@ const InputAllSite = () => {
   );
 };
 
-export default InputAllSite;
+export default InputStore;

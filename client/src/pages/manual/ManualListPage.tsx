@@ -8,12 +8,12 @@ import SearchInput from "../../components/search/SearchInput";
 import {useScroll} from "../../hook/useScroll";
 
 
-export interface AllSiteTable {
+export interface ManualTable {
     id: string
-    model: string
-    country: string
+    // model: string
     device: string
     oem: string
+    analog_oem: string
     count: string
     price: string
     link: string
@@ -22,13 +22,13 @@ export interface AllSiteTable {
 
 }
 
-interface AllSiteContainer extends Array<AllSiteTable> {
+interface ManualContainer extends Array<ManualTable> {
 }
 
-export const baseUrl = "http://localhost:7000/device/all"
+export const baseUrl = "http://localhost:7000/device/manual"
 
-const AllSiteListPage = () => {
-    const [todos, setTodos] = useState<AllSiteContainer>([]);
+const ManualListPage = () => {
+    const [todos, setTodos] = useState<ManualContainer>([]);
     const [searchValue, setSearchValue] = useState('')
     const [loading, setLoading] = useState(false)
     const [currentPage, setCurrentPage] = useState(1)
@@ -56,7 +56,7 @@ const AllSiteListPage = () => {
     const deleteTodo = async (id: string) => {
         try {
             const deleteTodo = await fetch(
-                `http://localhost:7000/device/all/${id}`,
+                `http://localhost:7000/device/manual/${id}`,
                 {
                     method: "DELETE",
                 }
@@ -91,7 +91,7 @@ const AllSiteListPage = () => {
         <Fragment>
             {/*{loading && <Loader/>}*/}
             {/*{error && <ErrorMessage error={error}/>}*/}
-            <div> All Site Table Form</div>
+            <div> Manual Table Form</div>
 
             <div className={s.tab_container}>
                 <div className={s.header_title_tab}>
@@ -110,12 +110,10 @@ const AllSiteListPage = () => {
                 <table className={s.table_first}>
                     <thead>
                     <tr>
-                        <th>Model</th>
-                        <th>Country</th>
+                        {/*<th>Model</th>*/}
                         <th>Device</th>
                         <th>OEM</th>
-                        <th>Count_ebay</th>
-                        <th>Price_ebay $</th>
+                        <th>Analog OEM</th>
                         <th>Date</th>
                         <th>Link</th>
                         <th>Image</th>
@@ -134,12 +132,10 @@ const AllSiteListPage = () => {
 
                         <thead>
                         <tr>
-                            <th>Model</th>
-                            <th>Country</th>
+                            {/*<th>Model</th>*/}
                             <th>Device</th>
                             <th>OEM</th>
-                            <th>Count_ebay</th>
-                            <th>Price_ebay $</th>
+                            <th>Analog OEM</th>
                             <th>Date</th>
                             <th>Link</th>
                             <th>Image</th>
@@ -158,12 +154,10 @@ const AllSiteListPage = () => {
                                 .map((todo) => {
                                         return (
                                             <tr key={todo.id}>
-                                                <td>{todo.model}</td>
-                                                <td>{todo.country}</td>
+                                                {/*<td>{todo.model}</td>*/}
                                                 <td>{todo.device}</td>
                                                 <td>{todo.oem}</td>
-                                                <td>{todo.count}</td>
-                                                <td>{todo.price}</td>
+                                                <td>{todo.analog_oem}</td>
                                                 <td>{todo.datetime}</td>
                                                 <td>
                                                     <a href={todo.link}>
@@ -192,8 +186,6 @@ const AllSiteListPage = () => {
                                     }
                                 )
                         }
-
-
                         </tbody>
                     </div>
                 </table>
@@ -204,4 +196,4 @@ const AllSiteListPage = () => {
     );
 };
 
-export default AllSiteListPage;
+export default ManualListPage;

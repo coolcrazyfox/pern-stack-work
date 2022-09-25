@@ -2,10 +2,11 @@ import React, { Fragment, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
-const InputAllSite = () => {
-  const [model, setModel] = useState("");
+const InputManual = () => {
+  // const [model, setModel] = useState("");
   const [device, setDevice] = useState("");
   const [oem, setOem] = useState("");
+  const [analog_oem, setAnalogOem] = useState("");
   const [link, setLink] = useState("");
   const [image, setImage] = useState("");
   const [datetime, setDateTime] = useState("");
@@ -17,8 +18,8 @@ const InputAllSite = () => {
   const onSubmitForm = async e => {
     e.preventDefault();
     try {
-      const body = { model,  device, oem,   link, image, datetime};
-      const response = await fetch("http://localhost:7000/device/all", {
+      const body = {  device, oem, analog_oem,  link, image, datetime};
+      const response = await fetch("http://localhost:7000/device/manual", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body)
@@ -37,12 +38,10 @@ const InputAllSite = () => {
             <thead class="thead-dark">
               <tr>
 
-                <th scope="col">Model</th>
-                <th scope="col">Country</th>
+                {/*<th scope="col">Model</th>*/}
                 <th scope="col">Device</th>
                 <th scope="col">OEM</th>
-                <th scope="col">Count_ebay</th>
-                <th scope="col">Price_ebay $</th>
+                <th scope="col">Analog OEM</th>
                 <th scope="col">Date</th>
                 <th scope="col">Link</th>
                 <th scope="col">Image</th>
@@ -52,24 +51,15 @@ const InputAllSite = () => {
             <tbody>
               <tr>
                 {/* <th scope="row">-</th> */}
-                  <td>
-                      <input
-                      placeholder="Send model"
-                      type="text"
-                      className="form-control"
-                      value={model}
-                      onChange={e => setModel(e.target.value)}
-                      />
-                  </td>
-                  <td>
-                    <input
-                    placeholder="Send country"
-                    type="text"
-                    className="form-control"
-                    value={country}
-                    onChange={e => setCountry(e.target.value)}
-                    />
-                  </td>
+                {/*  <td>*/}
+                {/*      <input*/}
+                {/*      placeholder="Send model"*/}
+                {/*      type="text"*/}
+                {/*      className="form-control"*/}
+                {/*      value={model}*/}
+                {/*      onChange={e => setModel(e.target.value)}*/}
+                {/*      />*/}
+                {/*  </td>*/}
                   <td>
                     <input
                       placeholder="Send device"
@@ -90,20 +80,11 @@ const InputAllSite = () => {
                   </td>
                   <td>
                     <input
-                      placeholder="Send count_ebay"
+                      placeholder="Send analog OEM"
                       type="text"
                       className="form-control"
-                      value={count}
-                      onChange={e => setCount(e.target.value)}
-                  />
-                  </td>
-                  <td>
-                    <input
-                      placeholder="Send price_ebay"
-                      type="text"
-                      className="form-control"
-                      value={price}
-                      onChange={e => setPrice(e.target.value)}
+                      value={analog_oem}
+                      onChange={e => setAnalogOem(e.target.value)}
                   />
                   </td>
 
@@ -151,4 +132,4 @@ const InputAllSite = () => {
   );
 };
 
-export default InputAllSite;
+export default InputManual;
