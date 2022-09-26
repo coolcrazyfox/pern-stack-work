@@ -76,7 +76,7 @@ CREATE TABLE storetab(
     price VARCHAR(300),
     link TEXT,
     image TEXT,
-    datetime DATE
+    datetime VARCHAR(50)
     );
 
 
