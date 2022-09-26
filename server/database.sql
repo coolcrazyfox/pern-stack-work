@@ -6,7 +6,7 @@ CREATE TABLE manualtab(
     analog_oem VARCHAR(300),
     link TEXT,
     image TEXT,
-    datetime DATE
+    datetime VARCHAR(50)
     );
 CREATE TABLE allsitetab(
     id SERIAL NOT NULL PRIMARY KEY,
