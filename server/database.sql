@@ -28,7 +28,7 @@ CREATE TABLE analogtab(
     analog_oem VARCHAR(100) NOT NULL,
     link TEXT,
     image TEXT,
-    datetime DATE
+    datetime VARCHAR(50)
     );
 CREATE TABLE ebaytab(
     id SERIAL NOT NULL PRIMARY KEY,
