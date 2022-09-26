@@ -19,7 +19,7 @@ CREATE TABLE allsitetab(
     price VARCHAR(300),
     link TEXT,
     image TEXT,
-    datetime DATE
+    datetime VARCHAR(50)
     );
 CREATE TABLE analogtab(
     id SERIAL NOT NULL PRIMARY KEY,
