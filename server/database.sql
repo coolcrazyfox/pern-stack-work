@@ -1,8 +1,8 @@
-CREATE DATABASE razborkawork;
+CREATE DATABASE razborka;
 CREATE TABLE oem(
     id SERIAL NOT NULL PRIMARY KEY,
     oem_number VARCHAR(300) NOT NULL
-    )
+    );
 CREATE TABLE manualtab(
     id SERIAL NOT NULL PRIMARY KEY,
     oem_id BIGINT,
@@ -103,7 +103,6 @@ CREATE TABLE allsitetab(
     FOREIGN KEY (ebay_id) REFERENCES ebaytab(id) UNIQUE(ebay_id),
     FOREIGN KEY (store_id) REFERENCES storetab(id) UNIQUE(store_id),
     FOREIGN KEY (name_site_id) REFERENCES namesite(id) ON DELETE CASCADE
-
     );
 CREATE TABLE namesite(
     id SERIAL NOT NULL PRIMARY KEY,
