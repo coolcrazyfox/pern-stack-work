@@ -93,6 +93,10 @@ CREATE TABLE namesite(
     id SERIAL NOT NULL PRIMARY KEY,
     name_site VARCHAR(50)
     );
+-- https://metanit.com/sql/postgresql/6.1.php
+-- https://www.youtube.com/watch?v=HnRXzrg3Sd4&ab_channel=RclassTech
+-- https://youtu.be/ZKU7-ktaa2o
+-- https://youtu.be/oOJgHQ5Yuto
 
 -- CREATE TABLE analogtab(
 --     id SERIAL NOT NULL PRIMARY KEY,
