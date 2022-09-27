@@ -5,15 +5,14 @@ CREATE TABLE oem(
     );
 CREATE TABLE manualtab(
     id SERIAL NOT NULL PRIMARY KEY,
-    oem_id BIGINT,
+    oem_id BIGINT REFERENCES oem(id) ON DELETE CASCADE,
     model  VARCHAR(300),
     device VARCHAR(170) NOT NULL,
-    oem VARCHAR(300) NOT NULL,
     analog_oem VARCHAR(300),
     link TEXT,
     image TEXT,
-    datetime VARCHAR(50),
-    FOREIGN KEY (oem_id) REFERENCES oem(id) ON DELETE CASCADE
+    datetime VARCHAR(50)
+
     );
 CREATE TABLE avitatab(
     id SERIAL NOT NULL PRIMARY KEY,
