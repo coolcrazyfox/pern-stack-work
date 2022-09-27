@@ -80,7 +80,13 @@ CREATE TABLE storetab(
     FOREIGN KEY (name_site_id) REFERENCES namesite(id) ON DELETE CASCADE
     );
 CREATE TABLE allsitetab(
---     id SERIAL NOT NULL PRIMARY KEY,
+    id SERIAL NOT NULL PRIMARY KEY,
+    manual_id BIGINT,
+    bamper_id BIGINT,
+    avita_id BIGINT,
+    ebay_id BIGINT,
+    store_id BIGINT,
+    name_site_id BIGINT,
 --     model VARCHAR(50),
 --     country VARCHAR(50),
 --     device VARCHAR(170) NOT NULL,
@@ -90,7 +96,14 @@ CREATE TABLE allsitetab(
 --     price VARCHAR(300),
 --     link TEXT,
 --     image TEXT,
---     datetime VARCHAR(50)
+    datetime VARCHAR(50),
+    FOREIGN KEY (manual_id) REFERENCES manualtab(id) UNIQUE(manual_id),
+    FOREIGN KEY (bamper_id) REFERENCES bampertab(id) UNIQUE(bamper_id),
+    FOREIGN KEY (avita_id) REFERENCES avitatab(id) UNIQUE(avita_id),
+    FOREIGN KEY (ebay_id) REFERENCES ebaytab(id) UNIQUE(ebay_id),
+    FOREIGN KEY (store_id) REFERENCES storetab(id) UNIQUE(store_id),
+    FOREIGN KEY (name_site_id) REFERENCES namesite(id) ON DELETE CASCADE
+
     );
 CREATE TABLE namesite(
     id SERIAL NOT NULL PRIMARY KEY,
