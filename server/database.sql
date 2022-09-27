@@ -16,8 +16,8 @@ CREATE TABLE manualtab(
     );
 CREATE TABLE avitatab(
     id SERIAL NOT NULL PRIMARY KEY,
-    manual_id BIGINT,
-    name_site_id BIGINT,
+    manual_id BIGINT REFERENCES manualtab(id) UNIQUE(manual_id),
+    name_site_id BIGINT REFERENCES namesite(id) ON DELETE CASCADE,
     model VARCHAR(50),
     country VARCHAR(50) ,
     device VARCHAR(170) NOT NULL,
@@ -26,14 +26,12 @@ CREATE TABLE avitatab(
     price VARCHAR(300),
     link TEXT,
     image TEXT,
-    datetime VARCHAR(50),
-    FOREIGN KEY (manual_id) REFERENCES manualtab(id) UNIQUE(manual_id),
-    FOREIGN KEY (name_site_id) REFERENCES namesite(id) ON DELETE CASCADE
+    datetime VARCHAR(50)
     );
 CREATE TABLE bampertab(
     id SERIAL NOT NULL PRIMARY KEY,
-    manual_id BIGINT,
-    name_site_id BIGINT,
+    manual_id BIGINT REFERENCES manualtab(id) UNIQUE(manual_id),
+    name_site_id BIGINT REFERENCES namesite(id) ON DELETE CASCADE,
     model VARCHAR(50),
     country VARCHAR(50) ,
     device VARCHAR(170) NOT NULL,
@@ -42,14 +40,12 @@ CREATE TABLE bampertab(
     price VARCHAR(300),
     link TEXT,
     image TEXT,
-    datetime VARCHAR(50),
-    FOREIGN KEY (manual_id) REFERENCES manualtab(id) UNIQUE(manual_id),
-    FOREIGN KEY (name_site_id) REFERENCES namesite(id) ON DELETE CASCADE
+    datetime VARCHAR(50)
     );
 CREATE TABLE ebaytab(
     id SERIAL NOT NULL PRIMARY KEY,
-    manual_id BIGINT,
-    name_site_id BIGINT,
+    manual_id BIGINT REFERENCES manualtab(id) UNIQUE(manual_id),
+    name_site_id BIGINT REFERENCES namesite(id) ON DELETE CASCADE,
     model VARCHAR(50),
     country VARCHAR(50) ,
     device VARCHAR(170) NOT NULL,
@@ -58,14 +54,12 @@ CREATE TABLE ebaytab(
     price VARCHAR(300),
     link TEXT,
     image TEXT,
-    datetime VARCHAR(50),
-    FOREIGN KEY (manual_id) REFERENCES manualtab(id) UNIQUE(manual_id),
-    FOREIGN KEY (name_site_id) REFERENCES namesite(id) ON DELETE CASCADE
+    datetime VARCHAR(50)
     );
 CREATE TABLE storetab(
     id SERIAL NOT NULL PRIMARY KEY,
-    manual_id BIGINT,
-    name_site_id BIGINT,
+    manual_id BIGINT REFERENCES manualtab(id) UNIQUE(manual_id),
+    name_site_id BIGINT REFERENCES namesite(id) ON DELETE CASCADE,
     model VARCHAR(50),
     country VARCHAR(50) ,
     device VARCHAR(170) NOT NULL,
@@ -74,18 +68,16 @@ CREATE TABLE storetab(
     price VARCHAR(300),
     link TEXT,
     image TEXT,
-    datetime VARCHAR(50),
-    FOREIGN KEY (manual_id) REFERENCES manualtab(id) UNIQUE(manual_id),
-    FOREIGN KEY (name_site_id) REFERENCES namesite(id) ON DELETE CASCADE
+    datetime VARCHAR(50)
     );
 CREATE TABLE allsitetab(
     id SERIAL NOT NULL PRIMARY KEY,
-    manual_id BIGINT,
-    bamper_id BIGINT,
-    avita_id BIGINT,
-    ebay_id BIGINT,
-    store_id BIGINT,
-    name_site_id BIGINT,
+    manual_id BIGINT REFERENCES manualtab(id) UNIQUE(manual_id),
+    bamper_id BIGINT REFERENCES bampertab(id) UNIQUE(bamper_id,
+    avita_id BIGINT REFERENCES avitatab(id) UNIQUE(avita_id),
+    ebay_id BIGINT REFERENCES ebaytab(id) UNIQUE(ebay_id),
+    store_id BIGINT REFERENCES storetab(id) UNIQUE(store_id),
+    name_site_id BIGINT REFERENCES namesite(id) ON DELETE CASCADE,
 --     model VARCHAR(50),
 --     country VARCHAR(50),
 --     device VARCHAR(170) NOT NULL,
@@ -95,13 +87,7 @@ CREATE TABLE allsitetab(
 --     price VARCHAR(300),
 --     link TEXT,
 --     image TEXT,
-    datetime VARCHAR(50),
-    FOREIGN KEY (manual_id) REFERENCES manualtab(id) UNIQUE(manual_id),
-    FOREIGN KEY (bamper_id) REFERENCES bampertab(id) UNIQUE(bamper_id),
-    FOREIGN KEY (avita_id) REFERENCES avitatab(id) UNIQUE(avita_id),
-    FOREIGN KEY (ebay_id) REFERENCES ebaytab(id) UNIQUE(ebay_id),
-    FOREIGN KEY (store_id) REFERENCES storetab(id) UNIQUE(store_id),
-    FOREIGN KEY (name_site_id) REFERENCES namesite(id) ON DELETE CASCADE
+    datetime VARCHAR(50)
     );
 CREATE TABLE namesite(
     id SERIAL NOT NULL PRIMARY KEY,
