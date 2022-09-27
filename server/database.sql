@@ -1,6 +1,12 @@
 CREATE DATABASE razborkawork;
+CREATE TABLE oem(
+    id SERIAL NOT NULL PRIMARY KEY,
+    oem_number VARCHAR(300) NOT NULL
+    )
 CREATE TABLE manualtab(
     id SERIAL NOT NULL PRIMARY KEY,
+    oem_id INTEGER REFERENCES oem(id),
+    model  VARCHAR(300) NOT NULL,
     device VARCHAR(170) NOT NULL,
     oem VARCHAR(300) NOT NULL,
     analog_oem VARCHAR(300),
