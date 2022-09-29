@@ -1,17 +1,5 @@
--- CREATE DATABASE razborka;
+CREATE DATABASE razborka;
 -- one-to-one
-
-
---     insert into oem(oem_number, oem_id) values ('5598444445', 3);
-CREATE TABLE oem(
-    id SERIAL NOT NULL PRIMARY KEY,
-    oem_number VARCHAR(300) NOT NULL,
-    oem_id BIGINT,
-    FOREIGN KEY (oem_id) REFERENCES manual (id)
-    );
-
--- insert into manual(model, device, analog_oem, link, image, datetime) values ('audi', 'navigation GPS', '178', 'link2', 'img2','2022-09-29');
-
 CREATE TABLE manual(
     id SERIAL NOT NULL PRIMARY KEY,
     model  VARCHAR(300),
@@ -21,32 +9,11 @@ CREATE TABLE manual(
     image TEXT,
     datetime VARCHAR(50)
     );
-
--- one-to-many
-CREATE TABLE categories(
+CREATE TABLE oem(
     id SERIAL NOT NULL PRIMARY KEY,
-    name_site  VARCHAR(30) NOT NULL
+    oem_number VARCHAR(300) NOT NULL,
+    oem_id BIGINT REFERENCES manual(id)
     );
-CREATE TABLE sitepost(
-    id SERIAL NOT NULL PRIMARY KEY,
-    oem VARCHAR(300) NOT NULL,
-    price INT,
-    sitepost_id BIGINT REFERENCES categories(id)
-    );
--- insert into person(name, surname) values ('5', '5453');create TABLE person(
-create TABLE person(
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(255),
-    surname VARCHAR(255)
-);
--- insert into post(title, content, user_id) values ('1', '2',1);
-create TABLE post(
-    id SERIAL PRIMARY KEY,
-    title VARCHAR(255),
-    content VARCHAR(255),
-    user_id INTEGER,
-    FOREIGN KEY (user_id) REFERENCES person (id)
-);
 -- one-to-many
 CREATE TABLE categories(
     id SERIAL NOT NULL PRIMARY KEY,
@@ -146,3 +113,21 @@ CREATE TABLE namesite(
     id SERIAL NOT NULL PRIMARY KEY,
     name_site VARCHAR(50)
     );
+-- https://metanit.com/sql/postgresql/6.1.php
+-- https://www.youtube.com/watch?v=HnRXzrg3Sd4&ab_channel=RclassTech
+-- https://youtu.be/ZKU7-ktaa2o
+-- https://youtu.be/oOJgHQ5Yuto
+
+-- CREATE TABLE analogtab(
+--     id SERIAL NOT NULL PRIMARY KEY,
+--     model VARCHAR(50),
+--     device VARCHAR(170) NOT NULL,
+--     analog_oem VARCHAR(100) NOT NULL,
+--     link TEXT,
+--     image TEXT,
+--     datetime VARCHAR(50)
+--     );
+
+
+
+
