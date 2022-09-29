@@ -2,15 +2,13 @@
 -- one-to-one
 
 
---     insert into oem(oem_number, oem_id) values ('5598444445', 3);
+--     insert into oem(oem_number) values ('5598444445', 3);
 CREATE TABLE oem(
     id SERIAL NOT NULL PRIMARY KEY,
-    oem_number VARCHAR(300) NOT NULL,
-    oem_id BIGINT,
-    FOREIGN KEY (oem_id) REFERENCES manual (id)
+    oem_number VARCHAR(300) NOT NULL
     );
 
--- insert into manual(model, device, analog_oem, link, image, datetime) values ('audi', 'navigation GPS', '178', 'link2', 'img2','2022-09-29');
+-- insert into manual(model, device, oem_id, analog_oem, link, image, datetime) values ('audi', 'navigation GPS', 1, '178', 'link2', 'img2','2022-09-29');
 
 CREATE TABLE manual(
     id SERIAL NOT NULL PRIMARY KEY,
@@ -19,7 +17,9 @@ CREATE TABLE manual(
     analog_oem VARCHAR(300),
     link TEXT,
     image TEXT,
-    datetime VARCHAR(50)
+    datetime VARCHAR(50),
+    oem_id BIGINT,
+    FOREIGN KEY (oem_id) REFERENCES oem (id)
     );
 
 -- one-to-many
