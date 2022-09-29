@@ -1,5 +1,5 @@
 {
-  "name": "server",
+  "name": "react-nodejs-psql",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,16 +7,14 @@
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
-  "engines": {
-    "node": "16.x"
-  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^16.0.1",
     "express": "^4.18.1",
-    "nodemon": "^2.0.16",
-    "pg": "^8.7.3"
+    "pg": "^8.8.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
   }
 }
