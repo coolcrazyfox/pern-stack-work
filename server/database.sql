@@ -1,19 +1,39 @@
 CREATE DATABASE razborka;
-CREATE TABLE oem(
-    id SERIAL NOT NULL PRIMARY KEY,
-    oem_number VARCHAR(300) NOT NULL
-    );
+-- one-to-one
 CREATE TABLE manualtab(
-    id SERIAL NOT NULL PRIMARY KEY,
-    oem_id BIGINT REFERENCES oem(id) ON DELETE CASCADE,
+    id SERIAL NOT NULL PRIMARY KEY,    
     model  VARCHAR(300),
     device VARCHAR(170) NOT NULL,
     analog_oem VARCHAR(300),
     link TEXT,
     image TEXT,
     datetime VARCHAR(50)
-
     );
+CREATE TABLE oem(
+    id SERIAL NOT NULL PRIMARY KEY,
+    oem_number VARCHAR(300) NOT NULL,
+    oem_id BIGINT REFERENCES manualtab(id)    
+    );
+-- one-to-many
+CREATE TABLE categories(
+    id SERIAL NOT NULL PRIMARY KEY,    
+    name_site  VARCHAR(30) NOT NULL    
+    );
+CREATE TABLE sitepost(
+    id SERIAL NOT NULL PRIMARY KEY,
+    oem VARCHAR(300) NOT NULL,
+    price INT,
+    sitepost_id BIGINT REFERENCES categories(id)    
+    );
+
+    -- many-to-many https://youtu.be/IjLqJKJxNzg
+CREATE TABLE inform(    
+    oemman_id BIGINT REFERENCES oem(id),
+    site_id BIGINT REFERENCES sitepost(id),
+    CONSTRAINT info_id PRIMARY KEY (oemman_id, site_id) 
+    );
+
+
 CREATE TABLE avitatab(
     id SERIAL NOT NULL PRIMARY KEY,
     manual_id BIGINT REFERENCES manualtab(id) UNIQUE(manual_id),

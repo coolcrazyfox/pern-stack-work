@@ -20,12 +20,6 @@ app.use(function (req, res, next) {
 });
 
 // Routes
-// create device
-
-// app.get('/', async (req, res )=>{
-//
-// })
-
 
 // all site table
 // create device
